@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import AdminRole from './Pages/AdminRole/AdminRole';
+import { context } from './Pages/Context';
+import FacultyRole from './Pages/FacultyRole/FacultyRole';
+import Home from './Pages/Home/Home';
+import StudentRole from './Pages/StudentRole/StudentRole';
+import Protected from './Protected';
+import ProtectedStudent from './ProtectedStudent'
+import ProtectedFaculty from './ProtectedFaculty';
 
-function App() {
+
+const App = () => {
+  const {signIn} = useContext(context);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/admin' element={<Protected signIn={signIn}><AdminRole></AdminRole></Protected>}></Route>
+        <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyRole></FacultyRole></ProtectedFaculty>}></Route>
+        {/* <Route path='/faculty' element={<Protected signIn={signIn}><FacultyRole></FacultyRole></Protected>}></Route> */}
+        <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentRole></StudentRole></ProtectedStudent>}></Route>
+        
+        {/* <Route path='/student' element={<Protected signIn={signIn}><StudentRole></StudentRole></Protected>}></Route> */}
+      </Routes>
     </div>
-  );
+  )
 }
 
 export default App;

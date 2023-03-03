@@ -1,0 +1,22 @@
+[
+    {
+        "email": "uttam@gmail.com",
+        "password": 123,
+        "role": "admin"
+    },
+    {
+        "email": "komol@yahoo.com",
+        "password": 456,
+        "role": "student"
+    },
+    {
+        "email": "uttam@hotmail.com",
+        "password": 123,
+        "role": "faculty"
+    },
+    {
+        "email": "uttam@outlook.com",
+        "password": 123,
+        "role": "student"
+    }
+]
