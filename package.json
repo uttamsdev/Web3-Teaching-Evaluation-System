@@ -11,7 +11,9 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@headlessui/react": "^1.7.8",
+    "@heroicons/react": "^2.0.14"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
   }
 }
