@@ -4,17 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { ContextProvider } from './Pages/Context';
+import { FeedbackProvider } from './Pages/Context/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ContextProvider>
+  <FeedbackProvider>
     <React.StrictMode>
       <BrowserRouter>
     <App />
     </BrowserRouter>
   </React.StrictMode>
-  </ContextProvider>
+  </FeedbackProvider>
 
   
 

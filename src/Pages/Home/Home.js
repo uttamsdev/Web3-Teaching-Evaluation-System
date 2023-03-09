@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { context } from '../Context';
-
+import loginLogo from "../../Pages/assets/avatar.png"
+import swal from 'sweetalert';
+import { FeedbackContext } from '../Context/Context';
 
 
 const Home = () => {
-   const {isSignedIn,setIsSignedIn} = useContext(context);
+   const {isSignedIn,setIsSignedIn} = useContext(FeedbackContext);
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
     // const userRole = localStorage.getItem("role");
@@ -51,22 +52,29 @@ const Home = () => {
             setIsSignedIn(true);
         } 
         else if(!admin || !faculty || !student){
-            alert("Email or password is wrong..");
-        } else {
-            alert("username or password is wrong..");
-        }
+            swal("Wrong Credential!", "Username or Password is wrong.!", "error");
+        } 
+        // else {
+        //     alert("username or password is wrong..");
+        // }
         // console.log(users);
 
         console.log(pass);
 
     }
   return (
-    <div style={{width:"100%",display:"flex", justifyContent:"center", alignItems:"center", marginTop:"50px"}}>
-        <form onSubmit={handleLogin}>
-            <input type="email"  name='email' placeholder='Enter email'/> <br />
-            <input type="password" name="pass" id="" placeholder='Enter password..'/> <br />
-            <input type="submit" value="Login" />
+    <div className='h-screen bg-gray-100 flex justify-center items-center'>
+        <div className='w-[350px] md:w-[450px] mx-auto bg-white flex justify-center h-[450px] shadow-xl'>
+           <div>
+            <img className='w-[100px] ring-4 rounded-full mx-auto mb-10 mt-12' src={loginLogo} alt="" />
+           <h1 className='text-center text-2xl font-bold mb-3'>Login Your Account</h1>
+        <form className=''  onSubmit={handleLogin}>
+            <input className='border focus:outline-none mb-3 w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200' type="text"  name='email' placeholder='Enter username'/> <br />
+            <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type="password" name="pass" id="" placeholder='Enter password..'/> <br />
+            <input className='btn bg-[#302d2d] text-white w-[300px] md:w-[350px] h-10 cursor-pointer hover:bg-black transition-all duration-200 ' type="submit" value="Login" />
         </form>
+           </div>
+        </div>
     </div>
   )
 }

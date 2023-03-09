@@ -1,40 +1,37 @@
 import React, { useContext, useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import AdminRole from './Pages/AdminRole/AdminRole';
-import { context } from './Pages/Context';
-import FacultyRole from './Pages/FacultyRole/FacultyRole';
 import Home from './Pages/Home/Home';
-import StudentRole from './Pages/StudentRole/StudentRole';
-import Protected from './Protected';
-import ProtectedStudent from './ProtectedStudent'
-import ProtectedFaculty from './ProtectedFaculty';
+import ProtectedAdmin from './Pages/ProtectedRoute/ProtectedAdmin';
+import ProtectedFaculty from './Pages/ProtectedRoute/ProtectedFaculty';
+import ProtectedStudent from './Pages/ProtectedRoute/ProtectedStudent';
 import AdminLayout from './Pages/Roles/AdminRole/Layout/AdminLayout';
-import Dashboard from './Pages/Roles/AdminRole/Pages/Dashboard';
-import Billing from './Pages/Roles/AdminRole/Pages/Billinig';
-import Account from './Pages/Roles/AdminRole/Pages/Account';
+import AdminDashboard from './Pages/Roles/AdminRole/components/AdminDashboard';
+import Billing from './Pages/Roles/AdminRole/components/Billinig';
+import Account from './Pages/Roles/AdminRole/components/Account';
 import StudentLayout from './Pages/Roles/StudentRole/Layout/StudentLayout';
-import StudentDashboard from './Pages/Roles/StudentRole/Pages/StudentDashboard';
-import StudentAccount from './Pages/Roles/StudentRole/Pages/StudentAccount';
+import StudentDashboard from './Pages/Roles/StudentRole/components/StudentDashboard';
+import StudentAccount from './Pages/Roles/StudentRole/components/StudentAccount';
 import FacultyLayout from './Pages/Roles/FacultyRole/Layout/FacultyLayout';
-import FacultyDashboard from './Pages/Roles/FacultyRole/Pages/FacultyDashboard';
-import FacultyAccount from './Pages/Roles/FacultyRole/Pages/FacultyAccount';
+import FacultyDashboard from './Pages/Roles/FacultyRole/components/FacultyDashboard';
+import FacultyAccount from './Pages/Roles/FacultyRole/components/FacultyAccount';
+import { FeedbackContext } from './Pages/Context/Context';
+import NotFound from './Pages/Shared/NotFound';
 
 
 const App = () => {
-  const {signIn} = useContext(context);
+  const {signIn} = useContext(FeedbackContext);
   return (
     <div>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/admin' element={<Protected signIn={signIn}><AdminLayout><Dashboard></Dashboard></AdminLayout></Protected>}></Route>
-        <Route path='/admin/billing' element={<Protected signIn={signIn}><AdminLayout><Billing></Billing></AdminLayout></Protected>}></Route>
-        <Route path='/admin/account' element={<Protected signIn={signIn}><AdminLayout><Account></Account></AdminLayout></Protected>}></Route>
+        <Route path='/admin' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/billing' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Billing></Billing></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/account' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/faculty/account' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyAccount></FacultyAccount></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
         <Route path='/student/account' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentAccount></StudentAccount></StudentLayout></ProtectedStudent>}></Route>
-        
-        {/* <Route path='/student' element={<Protected signIn={signIn}><StudentRole></StudentRole></Protected>}></Route> */}
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   )
