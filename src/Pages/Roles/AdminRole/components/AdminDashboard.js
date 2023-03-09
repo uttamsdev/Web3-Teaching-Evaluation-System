@@ -8,7 +8,7 @@ import {FaUsers} from "react-icons/fa";
 const Dashboard = () => {
     return (
         <div className='bg-[#F5F5F5] calc-height rounded-xl'>
-            <p className='text-white text-2xl mb-8 font-bold bg-[#039BE5] h-24 flex items-center'><AiOutlineDashboard className='ml-5 mr-3 w-6 h-6'/>Dashboard</p>
+            <p className='text-white text-2xl mb-8 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineDashboard className='ml-5 mr-3 w-6 h-6'/>Administrator Dashboard</p>
             <p className='text-center text-[#16728e]  text-xl md:text-xl py-3 border-l-8 border-[#5bc0de]  mb-8 bg-[#4bc3e41d] rounded-md w-9/12 md:w-6/12 mx-auto'>Hey admin, You are welcome to your dashboard.</p>
             <div className='flex flex-col md:flex-row place-items-center place-content-center gap-5 mb-16 space-x-6 '>
                 <div className='rounded-lg  bg-white h-40 shadow-lg w-80 '>

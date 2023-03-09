@@ -14,7 +14,8 @@ import StudentDashboard from './Pages/Roles/StudentRole/components/StudentDashbo
 import StudentAccount from './Pages/Roles/StudentRole/components/StudentAccount';
 import FacultyLayout from './Pages/Roles/FacultyRole/Layout/FacultyLayout';
 import FacultyDashboard from './Pages/Roles/FacultyRole/components/FacultyDashboard';
-import FacultyAccount from './Pages/Roles/FacultyRole/components/FacultyAccount';
+// import FacultyAccount from './Pages/Roles/FacultyRole/components/FacultyAccount';
+import ViewFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedbacks';
 import { FeedbackContext } from './Pages/Context/Context';
 import NotFound from './Pages/Shared/NotFound';
 import ViewAllFeedbacks from './Pages/Roles/AdminRole/components/ViewAllFeedbacks';
@@ -30,7 +31,7 @@ const App = () => {
         <Route path='/admin/view-all-feedbacks' element={<ProtectedAdmin signIn={signIn}><AdminLayout><ViewAllFeedbacks></ViewAllFeedbacks></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/admin/create-account' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
-        <Route path='/faculty/account' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyAccount></FacultyAccount></FacultyLayout></ProtectedFaculty>}></Route>
+        <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewAllFeedbacks></ViewAllFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
         <Route path='/student/account' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentAccount></StudentAccount></StudentLayout></ProtectedStudent>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
