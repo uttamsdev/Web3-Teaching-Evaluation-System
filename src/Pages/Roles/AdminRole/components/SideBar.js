@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon, CreditCardIcon, UserIcon } from '@heroicons/react/24/solid';
 // import CompanyLogo from '../../../assets/logo.png'
 import AdminLogo from '../../../assets/adminLogo.jpg';
+import{MdPersonAddAlt1} from 'react-icons/md';
+import  { AiOutlineFundView } from 'react-icons/ai';
 
 const SideBar = forwardRef(({ showNav }, ref) => {
 
@@ -33,7 +35,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             ? 'bg-[#039BE5] text-white rounded-r-full'
                             : 'text-white hover:bg-[#039BE5] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
-                            <UserIcon className='w-5 h-5' />
+                            <MdPersonAddAlt1 className='w-5 h-5' />
                         </div>
                         <p>Create Account</p>
                     </div>
@@ -44,7 +46,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             ? 'bg-[#039BE5] text-white rounded-r-full'
                             : 'text-white hover:bg-[#039BE5] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
-                            <CreditCardIcon className='w-5 h-5' />
+                            <AiOutlineFundView className='w-5 h-5' />
                         </div>
                         <p>View Feedbacks</p>
                     </div>

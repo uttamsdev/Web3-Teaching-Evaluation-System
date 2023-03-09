@@ -11,7 +11,8 @@ import AdminDashboard from './Pages/Roles/AdminRole/components/AdminDashboard';
 import Account from './Pages/Roles/AdminRole/components/Account';
 import StudentLayout from './Pages/Roles/StudentRole/Layout/StudentLayout';
 import StudentDashboard from './Pages/Roles/StudentRole/components/StudentDashboard';
-import StudentAccount from './Pages/Roles/StudentRole/components/StudentAccount';
+// import ViewFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedbacks';
+// import StudentAccount from './Pages/Roles/StudentRole/components/StudentAccount';
 import FacultyLayout from './Pages/Roles/FacultyRole/Layout/FacultyLayout';
 import FacultyDashboard from './Pages/Roles/FacultyRole/components/FacultyDashboard';
 // import FacultyAccount from './Pages/Roles/FacultyRole/components/FacultyAccount';
@@ -19,6 +20,8 @@ import ViewFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedbacks';
 import { FeedbackContext } from './Pages/Context/Context';
 import NotFound from './Pages/Shared/NotFound';
 import ViewAllFeedbacks from './Pages/Roles/AdminRole/components/ViewAllFeedbacks';
+import SubmitFeedback from './Pages/Roles/StudentRole/components/SubmitFeedback';
+import CourseEnroll from './Pages/Roles/StudentRole/components/CourseEnroll';
 
 
 const App = () => {
@@ -33,7 +36,8 @@ const App = () => {
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewAllFeedbacks></ViewAllFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
-        <Route path='/student/account' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentAccount></StudentAccount></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/student/submit-feedback' element={<ProtectedStudent signIn={signIn}><StudentLayout><SubmitFeedback></SubmitFeedback></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/student/course-enroll' element={<ProtectedStudent signIn={signIn}><StudentLayout><CourseEnroll></CourseEnroll></StudentLayout></ProtectedStudent>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
