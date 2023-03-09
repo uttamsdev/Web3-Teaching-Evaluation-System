@@ -64,12 +64,14 @@ const Home = () => {
     }
   return (
     <div className='h-screen bg-gray-100 flex justify-center items-center'>
-        <div className='w-[350px] md:w-[450px] mx-auto bg-white flex justify-center h-[450px] shadow-xl'>
+        <div className='w-[350px] md:w-[450px] mx-auto bg-white flex justify-center h-[480px] shadow-xl'>
            <div>
             <img className='w-[100px] ring-4 rounded-full mx-auto mb-10 mt-12' src={loginLogo} alt="" />
            <h1 className='text-center text-2xl font-bold mb-3'>Login Your Account</h1>
         <form className=''  onSubmit={handleLogin}>
+            <label htmlFor="#" className='font-bold'>Username: </label> <br />
             <input className='border focus:outline-none mb-3 w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200' type="text"  name='email' placeholder='Enter username'/> <br />
+            <label htmlFor="#" className='font-bold'>Password: </label> <br />
             <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type="password" name="pass" id="" placeholder='Enter password..'/> <br />
             <input className='btn bg-[#302d2d] text-white w-[300px] md:w-[350px] h-10 cursor-pointer hover:bg-black transition-all duration-200 ' type="submit" value="Login" />
         </form>

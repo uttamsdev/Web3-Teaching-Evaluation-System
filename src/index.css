@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.calc-height{
+  height: calc(100vh - 100px)
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
