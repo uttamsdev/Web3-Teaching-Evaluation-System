@@ -7,7 +7,7 @@ import ProtectedStudent from './Pages/ProtectedRoute/ProtectedStudent';
 import AdminLayout from './Pages/Roles/AdminRole/Layout/AdminLayout';
 import AdminDashboard from './Pages/Roles/AdminRole/components/AdminDashboard';
 // import Billing from './Pages/Roles/AdminRole/components/Billinig';
-import Billing from './Pages/Roles/AdminRole/components/Billinig'
+
 import Account from './Pages/Roles/AdminRole/components/Account';
 import StudentLayout from './Pages/Roles/StudentRole/Layout/StudentLayout';
 import StudentDashboard from './Pages/Roles/StudentRole/components/StudentDashboard';
@@ -17,6 +17,7 @@ import FacultyDashboard from './Pages/Roles/FacultyRole/components/FacultyDashbo
 import FacultyAccount from './Pages/Roles/FacultyRole/components/FacultyAccount';
 import { FeedbackContext } from './Pages/Context/Context';
 import NotFound from './Pages/Shared/NotFound';
+import ViewAllFeedbacks from './Pages/Roles/AdminRole/components/ViewAllFeedbacks';
 
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/admin' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/admin/billing' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Billing></Billing></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/view-all-feedbacks' element={<ProtectedAdmin signIn={signIn}><AdminLayout><ViewAllFeedbacks></ViewAllFeedbacks></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/admin/create-account' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/faculty/account' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyAccount></FacultyAccount></FacultyLayout></ProtectedFaculty>}></Route>
