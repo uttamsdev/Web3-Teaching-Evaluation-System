@@ -14,6 +14,12 @@ code {
 .calc-height{
   height: calc(100vh - 100px)
 }
+.info-size{
+  font-size: 18px;
+}
+.info-width{
+  width:35%;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

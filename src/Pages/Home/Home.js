@@ -6,7 +6,7 @@ import { FeedbackContext } from '../Context/Context';
 
 
 const Home = () => {
-   const {isSignedIn,setIsSignedIn} = useContext(FeedbackContext);
+   const {isSignedIn,setIsSignedIn, currentAccount, connectWallet} = useContext(FeedbackContext);
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
     // const userRole = localStorage.getItem("role");
@@ -63,7 +63,10 @@ const Home = () => {
 
     }
   return (
-    <div className='h-screen bg-gray-100 flex justify-center items-center'>
+   <div className='h-screen bg-gray-100 pt-12'>
+    <p className='info-width text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Connect your wallet first by click on Connect Wallet Button before login </p>
+   
+     <div className='flex justify-center items-center'>
         <div className='w-[350px] md:w-[450px] mx-auto bg-white flex justify-center h-[480px] shadow-xl'>
            <div>
             <img className='w-[100px] ring-4 rounded-full mx-auto mb-10 mt-12' src={loginLogo} alt="" />
@@ -78,6 +81,10 @@ const Home = () => {
            </div>
         </div>
     </div>
+    {
+        !currentAccount && <button className='btn bg-[#333] text-white px-5 py-2 rounded block mx-auto mt-10 font-bold' onClick={connectWallet}>Connect Wallet</button>
+    }
+   </div>
   )
 }
 
