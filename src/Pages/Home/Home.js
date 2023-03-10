@@ -6,7 +6,7 @@ import { FeedbackContext } from '../Context/Context';
 
 
 const Home = () => {
-   const {isSignedIn,setIsSignedIn, currentAccount, connectWallet} = useContext(FeedbackContext);
+   const {isSignedIn,setIsSignedIn, currentAccount, connectWallet, handleChange2, userLoginData} = useContext(FeedbackContext);
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
     // const userRole = localStorage.getItem("role");
@@ -26,12 +26,12 @@ const Home = () => {
     const handleLogin = async(event) => {
         event.preventDefault();
 
-        const email = event.target.email.value;
-        const pass = event.target.pass.value;
+        const {username, password} = userLoginData;
+        console.log(username, password);
 
-        const admin = users.find(user => user.email==email && user.role=="admin" && user.password==pass);
-        const faculty = users.find(user => user.email==email && user.role=="faculty" && user.password==pass);
-        const student = users.find(user => user.email==email && user.role=="student" && user.password==pass);
+        const admin = users.find(user => user.email==username && user.role=="admin" && user.password==password);
+        const faculty = users.find(user => user.email==username && user.role=="faculty" && user.password==password);
+        const student = users.find(user => user.email==username && user.role=="student" && user.password==password);
         
         if(admin){
             navigate('/admin');
@@ -59,7 +59,7 @@ const Home = () => {
         // }
         // console.log(users);
 
-        console.log(pass);
+        // console.log(pass);
 
     }
   return (
@@ -78,9 +78,9 @@ const Home = () => {
            <h1 className='text-center text-2xl font-bold mb-3'>Login Your Account</h1>
         <form className=''  onSubmit={handleLogin}>
             <label htmlFor="#" className='font-bold'>Username: </label> <br />
-            <input className='border focus:outline-none mb-3 w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200' type="text"  name='email' placeholder='Enter username'/> <br />
+            <input className='border focus:outline-none mb-3 w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200' type="text"  name='username' placeholder='Enter username' onBlur={(e) => handleChange2(e, e.target.name)}/> <br />
             <label htmlFor="#" className='font-bold'>Password: </label> <br />
-            <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type="password" name="pass" id="" placeholder='Enter password..'/> <br />
+            <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type="password" name="password" id="" placeholder='Enter password..' onBlur={(e) => handleChange2(e, e.target.name)}/> <br />
             <input className='btn bg-[#302d2d] text-white w-[300px] md:w-[350px] h-10 cursor-pointer hover:bg-black transition-all duration-200 ' type="submit" value="Login" />
         </form>
            </div>

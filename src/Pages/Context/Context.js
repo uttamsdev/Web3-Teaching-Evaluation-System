@@ -5,10 +5,19 @@ const { ethereum } = window;
 export const FeedbackContext = createContext();
 export const FeedbackProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [isSignedIn, setIsSignedIn] = useState(null);
+  const signIn = localStorage.getItem("role");
+  const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
+  const  [userLoginData, setUserLoginData] = useState({username: '', password: ''});
 
-    const [isSignedIn, setIsSignedIn] = useState(null);
-    const signIn = localStorage.getItem("role");
+      //getting form input data
+      const handleChange = (e, name) => {
+        setCreateUserData((prevState) => ({...prevState, [name]: e.target.value}));
+    }
 
+    const handleChange2 = (e, name) => {
+      setUserLoginData((prevState) => ({...prevState, [name]: e.target.value}));
+  }
 
 
     const checkIfWalletIsConnected = async() => {
@@ -48,14 +57,12 @@ export const FeedbackProvider = ({ children }) => {
   
     useEffect(() => {
       checkIfWalletIsConnected();
-    //   getAllCertificates();
-    //   getEditedChain();
-    //   getIsAdminData();
+      // console.log(formData); 
     }, []);
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, handleChange, createUsrData, handleChange2, userLoginData}}>
         {children}
       </FeedbackContext.Provider>
     )
