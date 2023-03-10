@@ -12,7 +12,7 @@ const Account = () => {
         // const rolex = event.target.username.value;
         // console.log("rolex",rolex);
 
-        if(!username || !password) return; //TODO: change this for next timee
+        if(!username || !password || !role) return; //TODO: change this for next timee
         console.log(username, password, role);
 
     }

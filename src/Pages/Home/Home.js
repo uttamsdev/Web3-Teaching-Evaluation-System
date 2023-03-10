@@ -26,6 +26,10 @@ const Home = () => {
     const handleLogin = async(event) => {
         event.preventDefault();
 
+        if(!currentAccount){
+            swal("Connect Wallet First!", "Connect your wallet first to  proceed login!", "error");
+            return;
+        }
         const {username, password} = userLoginData;
         console.log(username, password);
 
