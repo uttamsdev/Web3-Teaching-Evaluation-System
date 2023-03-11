@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from "react";
 import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
+import swal from 'sweetalert';
+import { FeedbackContext } from '../../../Context/Context';
+import Loader from '../../../Shared/Loader';
+const { ethereum } = window;
+
 
 const FeedbackPage = ({facultyAddress, courseCodeState}) => {
+
+  const {createEthereumContract, isLoading, setIsLoading, setIsClicked} = useContext(FeedbackContext);
     const [number, setNumber] = useState(0);
     const [hoverStar, setHoverStar] = useState(undefined);
     const [number2, setNumber2] = useState(0);
@@ -47,7 +54,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
     console.log("Course Code from feedback page: ",courseCodeState);
 
 
-    const  handleFeedbackSubmit = (event) => {
+    const  handleFeedbackSubmit = async(event) => {
         event.preventDefault();
         const rating = (number/5) + (number2/5) + (number3/5) + (number4/5) + (number5/5) + (number6/5) + (number7/5) + (number8/5) + (number9/5) + (number10/5);
         const ratingToFixed = rating.toFixed(2);
@@ -55,6 +62,24 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
         const comment = event.target.comment.value;
         console.log("comment: ",comment);
         console.log("rating", ratingToFixed);
+
+        if(ethereum){
+          const transactionsContract = createEthereumContract();
+          const transactionHash = await transactionsContract.submitFeadback(facultyAddress, courseCodeState, ratingToFixed, comment);
+          setIsLoading(true);
+          console.log(`Loading - ${transactionHash.hash}`);
+          await transactionHash.wait();
+          console.log(`Success - ${transactionHash.hash}`);
+          setIsLoading(false);
+          setIsClicked(false);
+          if(transactionHash) {
+            swal("Feedback Submitted", "Your feedback successfully submitted","success");
+          } else {
+            swal("Feedback already submitted","You have already submitted feedback for this course.","error");
+          }
+        } else{
+          console.log("No ethereum object");
+        }
     }
   return (
     <div>
@@ -213,15 +238,19 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
 
            <form action="" onSubmit={handleFeedbackSubmit}>
            <textarea name="comment" id="" cols="30" rows="4" className='w-full focus:outline-none border-2 border-gray-200 px-2'></textarea>
-
+           {
+            isLoading && <Loader/>
+           }
             <button type='submit' className='btn bg-[#039BE5] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
            </form>
 
           
 
              
-           
+          
       </div>
+
+
 
         {/* //about course */}
 

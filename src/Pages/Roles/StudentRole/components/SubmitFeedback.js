@@ -21,7 +21,7 @@ const SubmitFeedback = () => {
     // console.log(studentEnrolledCourse);
   },[])
   return (
-    <div className='bg-[#F5F5F5] h-auto'>
+    <div className='bg-[#F5F5F5] min-h-screen h-auto'>
     <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineFileAdd className='ml-5 mr-3 w-6 h-6'/>Submit Feedback</p>
     <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to give feedback. </p>
     <div>
@@ -77,7 +77,7 @@ const SubmitFeedback = () => {
                 <p class="text-gray-900 whitespace-no-wrap">{course?.faculty}</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap"><button className='btn bg-red-400 rounded-md px-3 py-2 text-white ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button></p>
+                <p class="text-gray-900 whitespace-no-wrap"><button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button></p>
               </td>
                 </tr>)
             }

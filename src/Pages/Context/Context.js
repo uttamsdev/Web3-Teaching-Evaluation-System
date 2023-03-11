@@ -7,13 +7,13 @@ const { ethereum } = window;
 export const FeedbackContext = createContext();
 
 console.log(contractABI, contractAddress);
-const createEthereumContract = () => {
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
-  const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+// const createEthereumContract = () => {
+//   const provider = new ethers.providers.Web3Provider(ethereum);
+//   const signer = provider.getSigner();
+//   const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-  return transactionsContract;
-};
+//   return transactionsContract;
+// };
 
 export const FeedbackProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -26,6 +26,7 @@ export const FeedbackProvider = ({ children }) => {
   const [allCourses, setAllCourses] = useState([]);
   const [facultyCourses, setFacultyCourses] = useState([]);
   const [studentEnrolledCourse, setStudentEnrolledCourse] = useState([]);
+  const [allFeedbacks, setAllFeedbacks] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
       //getting form input data
@@ -40,6 +41,14 @@ export const FeedbackProvider = ({ children }) => {
       setAddCourseData((prevState) => ({...prevState, [name]: e.target.value}));
   }
 
+
+  const createEthereumContract = () => {
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+  
+    return transactionsContract;
+  };
 
     const checkIfWalletIsConnected = async() => {
       try {
@@ -66,13 +75,14 @@ export const FeedbackProvider = ({ children }) => {
           const accounts = await ethereum.request({method: 'eth_requestAccounts'});
           setCurrentAccount(accounts[0]);
       } catch (error) {
-          console.log(error);const createEthereumContract = () => {
-            const provider = new ethers.providers.Web3Provider(ethereum);
-            const signer = provider.getSigner();
-            const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+          console.log(error);
+          // const createEthereumContract = () => {
+          //   const provider = new ethers.providers.Web3Provider(ethereum);
+          //   const signer = provider.getSigner();
+          //   const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
           
-            return transactionsContract;
-          };
+          //   return transactionsContract;
+          // };
           throw new Error("No ethereum object.");
       }
   }
@@ -166,6 +176,20 @@ export const FeedbackProvider = ({ children }) => {
       }
     }
 
+    //get all feedback
+    const getAllFeedback = async() => {
+      try {
+        if(ethereum){
+          const transactionsContract = createEthereumContract();
+          const feedbacks = await transactionsContract.getAllFeedbacks();
+          setAllFeedbacks(feedbacks);
+
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
     
   
   
@@ -179,7 +203,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback}}>
         {children}
       </FeedbackContext.Provider>
     )
