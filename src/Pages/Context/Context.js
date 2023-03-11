@@ -26,6 +26,7 @@ export const FeedbackProvider = ({ children }) => {
   const [allCourses, setAllCourses] = useState([]);
   const [facultyCourses, setFacultyCourses] = useState([]);
   const [studentEnrolledCourse, setStudentEnrolledCourse] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
 
       //getting form input data
       const createAccountHandleChange = (e, name) => {
@@ -178,7 +179,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked}}>
         {children}
       </FeedbackContext.Provider>
     )

@@ -4,7 +4,7 @@ import { FeedbackContext } from '../../../Context/Context';
 const AllCourses = () => {
     const {getCourses, allCourses} = useContext(FeedbackContext);
     const courses = [{username: "uttam", pass:"123"}];
-    // console.log(allCourses);
+    console.log(allCourses);
 
     useEffect(()=>{
         getCourses();
