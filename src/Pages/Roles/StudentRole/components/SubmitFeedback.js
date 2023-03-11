@@ -7,12 +7,14 @@ import StudentCourses from './StudentCourses';
 const SubmitFeedback = () => {
   const {getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked} = useContext(FeedbackContext);
   const [facultyAddress, setFacultyAddress] = useState("");
+  const [courseCodeState, setCourseCodeState] = useState("");
   // const [isClicked, setIsClicked] = useState(false);
   
-  const openFeedback = (to) => {
+  const openFeedback = (to, courseCode) => {
     setIsClicked(true); //TODO: set isclicked to context api for close component is feedback submitted.
     console.log("tox:",to);
     setFacultyAddress(to);
+    setCourseCodeState(courseCode);
   }
   useEffect(()=>{
     getStudentCourses();
@@ -75,7 +77,7 @@ const SubmitFeedback = () => {
                 <p class="text-gray-900 whitespace-no-wrap">{course?.faculty}</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap"><button className='btn bg-red-400 rounded-md px-3 py-2 text-white ' onClick={()=>{openFeedback(course.facultyAddress)}}>Give Feedback</button></p>
+                <p class="text-gray-900 whitespace-no-wrap"><button className='btn bg-red-400 rounded-md px-3 py-2 text-white ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button></p>
               </td>
                 </tr>)
             }
@@ -86,7 +88,7 @@ const SubmitFeedback = () => {
   </div>
 </div>
     {
-      isClicked && <FeedbackPage facultyAddress={facultyAddress}></FeedbackPage>
+      isClicked && <FeedbackPage facultyAddress={facultyAddress} courseCodeState={courseCodeState}></FeedbackPage>
     }
 </div>
 </div>

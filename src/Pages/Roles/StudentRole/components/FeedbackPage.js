@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
 
-const FeedbackPage = ({facultyAddress}) => {
+const FeedbackPage = ({facultyAddress, courseCodeState}) => {
     const [number, setNumber] = useState(0);
     const [hoverStar, setHoverStar] = useState(undefined);
     const [number2, setNumber2] = useState(0);
@@ -44,6 +44,18 @@ const FeedbackPage = ({facultyAddress}) => {
         }
       };
     console.log("faculty address from feedback page: ", facultyAddress);
+    console.log("Course Code from feedback page: ",courseCodeState);
+
+
+    const  handleFeedbackSubmit = (event) => {
+        event.preventDefault();
+        const rating = (number/5) + (number2/5) + (number3/5) + (number4/5) + (number5/5) + (number6/5) + (number7/5) + (number8/5) + (number9/5) + (number10/5);
+        const ratingToFixed = rating.toFixed(2);
+
+        const comment = event.target.comment.value;
+        console.log("comment: ",comment);
+        console.log("rating", ratingToFixed);
+    }
   return (
     <div>
         <div className='w-11/12 block mx-auto'>
@@ -199,9 +211,11 @@ const FeedbackPage = ({facultyAddress}) => {
                 <p className='text-2xl text-white'>Comment</p>
             </div>
 
-            <textarea name="" id="" cols="30" rows="4" className='w-full focus:outline-none border-2 border-gray-200'></textarea>
+           <form action="" onSubmit={handleFeedbackSubmit}>
+           <textarea name="comment" id="" cols="30" rows="4" className='w-full focus:outline-none border-2 border-gray-200 px-2'></textarea>
 
-            <button className='btn bg-[#039BE5] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
+            <button type='submit' className='btn bg-[#039BE5] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
+           </form>
 
           
 
