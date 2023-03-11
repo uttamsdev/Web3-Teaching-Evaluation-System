@@ -22,6 +22,7 @@ export const FeedbackProvider = ({ children }) => {
   const signIn = localStorage.getItem("role");
   const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
   const  [userLoginData, setUserLoginData] = useState({username: '', password: ''});
+  const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''})
 
       //getting form input data
       const createAccountHandleChange = (e, name) => {
@@ -30,6 +31,9 @@ export const FeedbackProvider = ({ children }) => {
 
     const loginAccountHandleChange = (e, name) => {
       setUserLoginData((prevState) => ({...prevState, [name]: e.target.value}));
+  }
+    const courseAddHandleChange = (e, name) => {
+      setAddCourseData((prevState) => ({...prevState, [name]: e.target.value}));
   }
 
 
@@ -90,6 +94,27 @@ export const FeedbackProvider = ({ children }) => {
       }
     }
 
+    //add courses
+    const AddCourse = async() => {
+      try {
+        if(ethereum){
+          const {facultyAddress, facultyName, courseCode, courseTitle} = addCourseData;
+          const transactionsContract = createEthereumContract();
+          const transactionHash = await transactionsContract.addCourses(facultyAddress, facultyName, courseCode, courseTitle);
+          setIsLoading(true);
+          console.log(`Loading - ${transactionHash.hash}`);
+          await transactionHash.wait();
+          console.log(`Success - ${transactionHash.hash}`);
+          swal("Course Successfully Added", `Transaction hash: ${transactionHash.hash}`, "success");
+          setIsLoading(false);
+        } else{
+          console.log("No ethereum object");
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
 
     
   
@@ -102,7 +127,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse}}>
         {children}
       </FeedbackContext.Provider>
     )
