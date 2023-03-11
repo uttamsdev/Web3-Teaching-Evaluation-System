@@ -7,6 +7,7 @@ import AdminLogo from '../../../assets/adminLogo.jpg';
 import{MdPersonAddAlt1} from 'react-icons/md';
 import  { AiOutlineFundView } from 'react-icons/ai';
 import {FaDiscourse} from 'react-icons/fa';
+import { MdOutlinePreview } from 'react-icons/md';
 
 const SideBar = forwardRef(({ showNav }, ref) => {
 
@@ -39,6 +40,17 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             <MdPersonAddAlt1 className='w-5 h-5' />
                         </div>
                         <p>Create Account</p>
+                    </div>
+                </Link>
+                <Link to='/admin/all-courses'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
+                    ${router.pathname === "/admin/all-courses"
+                            ? 'bg-[#039BE5] text-white rounded-r-full'
+                            : 'text-white hover:bg-[#039BE5] hover:text-white rounded-r-full'}`}>
+                        <div className='mr-2'>
+                            <MdOutlinePreview className='w-5 h-5' />
+                        </div>
+                        <p>All Courses</p>
                     </div>
                 </Link>
                 <Link to='/admin/add-courses'>

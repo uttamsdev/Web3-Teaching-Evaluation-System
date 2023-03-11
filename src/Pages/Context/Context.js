@@ -22,7 +22,8 @@ export const FeedbackProvider = ({ children }) => {
   const signIn = localStorage.getItem("role");
   const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
   const  [userLoginData, setUserLoginData] = useState({username: '', password: ''});
-  const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''})
+  const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''});
+  const [allCourses, setAllCourses] = useState([]);
 
       //getting form input data
       const createAccountHandleChange = (e, name) => {
@@ -116,6 +117,21 @@ export const FeedbackProvider = ({ children }) => {
       }
     }
 
+    //get all courses
+    const  getCourses = async() => {
+      try {
+        if(ethereum){
+          const transactionsContract = createEthereumContract();
+          const courses = await transactionsContract.getAllCourses();
+          setAllCourses(courses);
+
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
+
     
   
   
@@ -123,11 +139,13 @@ export const FeedbackProvider = ({ children }) => {
     useEffect(() => {
       checkIfWalletIsConnected();
       // console.log(formData); 
+      // getCourses();
+      // console.log("all courses:",allCourses);
     }, []);
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses}}>
         {children}
       </FeedbackContext.Provider>
     )

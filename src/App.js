@@ -23,6 +23,7 @@ import ViewAllFeedbacks from './Pages/Roles/AdminRole/components/ViewAllFeedback
 import SubmitFeedback from './Pages/Roles/StudentRole/components/SubmitFeedback';
 import CourseEnroll from './Pages/Roles/StudentRole/components/CourseEnroll';
 import AddCourses from './Pages/Roles/AdminRole/components/AddCourses';
+import AllCourses from './Pages/Roles/AdminRole/components/AllCourses';
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route path='/admin/view-all-feedbacks' element={<ProtectedAdmin signIn={signIn}><AdminLayout><ViewAllFeedbacks></ViewAllFeedbacks></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/admin/create-account' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/admin/add-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AddCourses></AddCourses></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/all-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AllCourses></AllCourses></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewAllFeedbacks></ViewAllFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
