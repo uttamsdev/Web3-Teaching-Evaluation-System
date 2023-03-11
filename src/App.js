@@ -26,6 +26,7 @@ import AddCourses from './Pages/Roles/AdminRole/components/AddCourses';
 import AllCourses from './Pages/Roles/AdminRole/components/AllCourses';
 import FacultyCourses from './Pages/Roles/FacultyRole/components/FacultyCourses';
 import StudentCourses from './Pages/Roles/StudentRole/components/StudentCourses';
+import ViewFacultyFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedbacks';
 
 
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
         <Route path='/admin/add-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AddCourses></AddCourses></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/admin/all-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AllCourses></AllCourses></AdminLayout></ProtectedAdmin>}></Route>
         <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
-        <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewAllFeedbacks></ViewAllFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
+        <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewFacultyFeedbacks></ViewFacultyFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/faculty/view-courses' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyCourses></FacultyCourses></FacultyLayout></ProtectedFaculty>}></Route>
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
         <Route path='/student/submit-feedback' element={<ProtectedStudent signIn={signIn}><StudentLayout><SubmitFeedback></SubmitFeedback></StudentLayout></ProtectedStudent>}></Route>
