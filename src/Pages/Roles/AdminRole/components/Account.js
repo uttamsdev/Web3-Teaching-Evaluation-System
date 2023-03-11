@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { FeedbackContext } from '../../../Context/Context'
 
 const Account = () => {
-    const  {handleChange, createUsrData} = useContext(FeedbackContext);
+    const  {createAccountHandleChange, createUsrData} = useContext(FeedbackContext);
 
     const handleLogin = async(event) => {
         const {username, password, role} =  createUsrData;
@@ -25,14 +25,14 @@ const Account = () => {
                     <div className='flex justify-start w-full ml-8 md:ml-[100px]'>
                     <label htmlFor="#" className='font-bold'>Username: </label>
                     </div>
-                    <input type="text" className='border focus:outline-none w-[300px] md:w-[500px] h-10 bg-gray-200 pl-3 mb-4 ' name='username' placeholder='Enter username' onBlur={(e) => handleChange(e, e.target.name)}/>
+                    <input type="text" className='border focus:outline-none w-[300px] md:w-[500px] h-10 bg-gray-200 pl-3 mb-4 ' name='username' placeholder='Enter username' onBlur={(e) => createAccountHandleChange(e, e.target.name)}/>
                     <div className='flex justify-start w-full ml-8 md:ml-[100px]'>
                     <label htmlFor="#" className='font-bold'>Password: </label>
                     </div>
-                    <input type="password" className='border focus:outline-none w-[300px] md:w-[500px] h-10 bg-gray-200 pl-3 mb-3' name="password" placeholder='Enter password' onBlur={(e) => handleChange(e, e.target.name)}/>
+                    <input type="password" className='border focus:outline-none w-[300px] md:w-[500px] h-10 bg-gray-200 pl-3 mb-3' name="password" placeholder='Enter password' onBlur={(e) => createAccountHandleChange(e, e.target.name)}/>
                     <div className='flex items-center gap-28 md:gap-80'>
                     <label className='font-bold'>Select Role:</label>
-                    <select className='p-2 rounded-2xl' name='role' onBlur={(e) => handleChange(e, e.target.name)}>
+                    <select className='p-2 rounded-2xl' name='role' onBlur={(e) => createAccountHandleChange(e, e.target.name)}>
                     <option selected="selected" disabled>Select Role</option>
                         <option value="faculty">Faculty</option>
                         <option value="student">Student</option>

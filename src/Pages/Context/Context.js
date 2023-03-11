@@ -11,11 +11,11 @@ export const FeedbackProvider = ({ children }) => {
   const  [userLoginData, setUserLoginData] = useState({username: '', password: ''});
 
       //getting form input data
-      const handleChange = (e, name) => {
+      const createAccountHandleChange = (e, name) => {
         setCreateUserData((prevState) => ({...prevState, [name]: e.target.value}));
     }
 
-    const handleChange2 = (e, name) => {
+    const loginAccountHandleChange = (e, name) => {
       setUserLoginData((prevState) => ({...prevState, [name]: e.target.value}));
   }
 
@@ -62,7 +62,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, handleChange, createUsrData, handleChange2, userLoginData}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData}}>
         {children}
       </FeedbackContext.Provider>
     )
