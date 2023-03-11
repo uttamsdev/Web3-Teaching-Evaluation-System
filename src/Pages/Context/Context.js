@@ -1,10 +1,23 @@
+import { ethers } from "ethers";
 import { createContext, useEffect, useState } from "react";
 import swal from "sweetalert";
+import { contractABI, contractAddress } from "../../utils/Constant";
 const { ethereum } = window;
 
 export const FeedbackContext = createContext();
+
+console.log(contractABI, contractAddress);
+const createEthereumContract = () => {
+  const provider = new ethers.providers.Web3Provider(ethereum);
+  const signer = provider.getSigner();
+  const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+
+  return transactionsContract;
+};
+
 export const FeedbackProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(null);
   const signIn = localStorage.getItem("role");
   const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
@@ -45,10 +58,37 @@ export const FeedbackProvider = ({ children }) => {
           const accounts = await ethereum.request({method: 'eth_requestAccounts'});
           setCurrentAccount(accounts[0]);
       } catch (error) {
-          console.log(error);
+          console.log(error);const createEthereumContract = () => {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+          
+            return transactionsContract;
+          };
           throw new Error("No ethereum object.");
       }
   }
+
+  //add user accounts
+    const createUserAccount = async() => {
+      try {
+        if(ethereum){
+          const {username, password, role} =  createUsrData;
+          const transactionsContract = createEthereumContract();
+          const transactionHash = await transactionsContract.createUserAccount(username, password, role);
+          setIsLoading(true);
+          console.log(`Loading - ${transactionHash.hash}`);
+          await transactionHash.wait();
+          console.log(`Success - ${transactionHash.hash}`);
+          setIsLoading(false);
+        } else{
+          console.log("No ethereum object");
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
 
 
     
@@ -62,7 +102,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount}}>
         {children}
       </FeedbackContext.Provider>
     )

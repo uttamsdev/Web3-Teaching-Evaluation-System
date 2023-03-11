@@ -1,0 +1,323 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_facultyName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_courseCode",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_courseTitle",
+				"type": "string"
+			}
+		],
+		"name": "addCourses",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_password",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_role",
+				"type": "string"
+			}
+		],
+		"name": "createUserAccount",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_courseCode",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_courseTitle",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_faculty",
+				"type": "string"
+			}
+		],
+		"name": "getEnroll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_courseCode",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_rating",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_comment",
+				"type": "string"
+			}
+		],
+		"name": "submitFeadback",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "getAllCourses",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "facultyName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseTitle",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.Course[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllFeedbacks",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "rating",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "comment",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.Faculty[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCourseByAddress",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "facultyName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseTitle",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.Course[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getEnrolledCourses",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseTitle",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "faculty",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.CourseEnroll[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getFeedbackByAddress",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "rating",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "comment",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.Feedback[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			}
+		],
+		"name": "getUserAccount",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "username",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "password",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.UserAccount[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
