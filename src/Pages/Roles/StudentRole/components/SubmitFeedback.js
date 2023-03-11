@@ -19,14 +19,12 @@ const SubmitFeedback = () => {
     // console.log(studentEnrolledCourse);
   },[])
   return (
-    <div className='bg-[#F5F5F5] calc-height rounded-b-3xl'>
+    <div className='bg-[#F5F5F5] h-auto'>
     <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineFileAdd className='ml-5 mr-3 w-6 h-6'/>Submit Feedback</p>
+    <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to give feedback. </p>
     <div>
        <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
-    <div>
-      <h2 class="text-2xl font-semibold leading-tight">My Courses</h2>
-    </div>
     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
       <div
         class="inline-block w-3/4 shadow-md rounded-lg overflow-hidden"

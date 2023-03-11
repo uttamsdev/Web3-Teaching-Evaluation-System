@@ -20,6 +20,10 @@ code {
 .info-width{
   width:35%;
 }
+.distance{
+  margin-right: 4px;
+  height: 15px;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
