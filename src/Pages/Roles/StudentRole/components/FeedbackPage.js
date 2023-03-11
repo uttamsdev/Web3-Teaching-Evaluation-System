@@ -65,13 +65,15 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
 
         if(ethereum){
           const transactionsContract = createEthereumContract();
-          const transactionHash = await transactionsContract.submitFeadback(facultyAddress, courseCodeState, ratingToFixed, comment);
+          const transactionHash = await transactionsContract.submitFeedback(facultyAddress, courseCodeState, ratingToFixed, comment);
           setIsLoading(true);
+          
           console.log(`Loading - ${transactionHash.hash}`);
           await transactionHash.wait();
           console.log(`Success - ${transactionHash.hash}`);
-          setIsLoading(false);
           setIsClicked(false);
+          setIsLoading(false);
+          
           if(transactionHash) {
             swal("Feedback Submitted", "Your feedback successfully submitted","success");
           } else {

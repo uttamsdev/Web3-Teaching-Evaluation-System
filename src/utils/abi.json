@@ -101,7 +101,7 @@
 				"type": "string"
 			}
 		],
-		"name": "submitFeadback",
+		"name": "submitFeedback",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -252,7 +252,13 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_courseCode",
+				"type": "string"
+			}
+		],
 		"name": "getFeedbackByAddress",
 		"outputs": [
 			{
