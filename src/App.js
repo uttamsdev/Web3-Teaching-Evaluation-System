@@ -25,6 +25,7 @@ import CourseEnroll from './Pages/Roles/StudentRole/components/CourseEnroll';
 import AddCourses from './Pages/Roles/AdminRole/components/AddCourses';
 import AllCourses from './Pages/Roles/AdminRole/components/AllCourses';
 import FacultyCourses from './Pages/Roles/FacultyRole/components/FacultyCourses';
+import StudentCourses from './Pages/Roles/StudentRole/components/StudentCourses';
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
         <Route path='/student/submit-feedback' element={<ProtectedStudent signIn={signIn}><StudentLayout><SubmitFeedback></SubmitFeedback></StudentLayout></ProtectedStudent>}></Route>
         <Route path='/student/course-enroll' element={<ProtectedStudent signIn={signIn}><StudentLayout><CourseEnroll></CourseEnroll></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/student/student-courses' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentCourses></StudentCourses></StudentLayout></ProtectedStudent>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

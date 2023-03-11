@@ -25,6 +25,7 @@ export const FeedbackProvider = ({ children }) => {
   const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''});
   const [allCourses, setAllCourses] = useState([]);
   const [facultyCourses, setFacultyCourses] = useState([]);
+  const [studentEnrolledCourse, setStudentEnrolledCourse] = useState([]);
 
       //getting form input data
       const createAccountHandleChange = (e, name) => {
@@ -149,6 +150,21 @@ export const FeedbackProvider = ({ children }) => {
       }
     }
 
+    //get student courses
+    const getStudentCourses = async() => {
+      try {
+        if(ethereum){
+          const transactionsContract = createEthereumContract();
+          const courses = await transactionsContract.getEnrolledCourses();
+          setStudentEnrolledCourse(courses);
+
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
+
     
   
   
@@ -162,7 +178,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse}}>
         {children}
       </FeedbackContext.Provider>
     )

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon, CreditCardIcon, UserIcon } from '@heroicons/react/24/solid';
 import studentLogo from '../../../assets/studentLogo.jpg'
 import {AiOutlineFileAdd} from "react-icons/ai";
-import {MdOutlineAssignmentInd} from "react-icons/md";
+import {MdOutlineAssignmentInd, MdOutlineLibraryBooks} from "react-icons/md";
 
 const SideBar = forwardRef(({ showNav }, ref) => {
 
@@ -37,6 +37,17 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             <MdOutlineAssignmentInd className='w-5 h-5' />
                         </div>
                         <p>Course Enroll</p>
+                    </div>
+                </Link>
+                <Link to='/student/student-courses'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
+                    ${router.pathname === "/student/student-courses"
+                            ? 'bg-[#039BE5] text-white rounded-r-full'
+                            : 'text-white hover:bg-[#039BE5] hover:text-white rounded-r-full'}`}>
+                        <div className='mr-2'>
+                            <MdOutlineLibraryBooks className='w-5 h-5' />
+                        </div>
+                        <p>My Courses</p>
                     </div>
                 </Link>
                 <Link to='/student/submit-feedback'>
