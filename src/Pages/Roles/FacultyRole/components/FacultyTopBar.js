@@ -18,7 +18,7 @@ const StudentTopBar = ({ showNav, setShowNav }) => {
         window.location.reload();
     }
     return (
-        <div className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${showNav ? "pl-56" : ""}`}>
+        <div className={`fixed bg-white w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${showNav ? "pl-56" : ""}`}>
             <div className="pl-4 md:pl-16">
                 <Bars3CenterLeftIcon
                     className="h-8 w-8 text-gray-700 cursor-pointer"
