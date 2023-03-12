@@ -31,7 +31,14 @@ export const FeedbackProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [feedbackByCourseCode, setFeedbackByCourseCode] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [singleUser, setSingleUser] = useState([]);
 
+
+  //Encrypt password cuntion
+  const  encryptPassword = () =>  {
+    const encryptedPassword = CryptoJS.AES.encrypt("uttamsaha", process.env.REACT_APP_SECRET_KEY).toString();
+    console.log(encryptedPassword);
+  }
       //getting form input data
       const createAccountHandleChange = (e, name) => {
         setCreateUserData((prevState) => ({...prevState, [name]: e.target.value}));
@@ -112,6 +119,24 @@ export const FeedbackProvider = ({ children }) => {
         throw new Error("No ethereum object");
       }
     }
+
+    //get user account / login user account
+    // const getLogin= async() => {
+    //   // const {username, password} = userLoginData;
+    //   // try {
+    //   //   if(ethereum){
+    //   //     const transactionsContract = createEthereumContract();
+    //   //     const user = await transactionsContract.getUserAccount(username);
+    //   //     setSingleUser(user);
+    //   //     console.log("username: ",user);
+    //   //     console.log("singleUser:",singleUser);
+
+    //   //   }
+    //   // } catch (error) {
+    //   //   console.log(error);
+    //   //   throw new Error("No ethereum object");
+    //   // }
+    // }
 
     //add courses
     const AddCourse = async() => {
@@ -216,6 +241,7 @@ export const FeedbackProvider = ({ children }) => {
   
     useEffect(() => {
       checkIfWalletIsConnected();
+      encryptPassword();
       // console.log(formData); 
       // getCourses();
       // console.log("all courses:",allCourses);
