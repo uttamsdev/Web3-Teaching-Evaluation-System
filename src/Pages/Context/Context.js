@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { createContext, useEffect, useState } from "react";
+import CryptoJS from "crypto-js";
 import swal from "sweetalert";
 import { contractABI, contractAddress } from "../../utils/Constant";
 const { ethereum } = window;
@@ -94,13 +95,15 @@ export const FeedbackProvider = ({ children }) => {
       try {
         if(ethereum){
           const {username, password, role} =  createUsrData;
+          const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.REACT_APP_SECRET_KEY).toString();
           const transactionsContract = createEthereumContract();
-          const transactionHash = await transactionsContract.createUserAccount(username, password, role);
+          const transactionHash = await transactionsContract.createUserAccount(username, encryptedPassword, role);
           setIsLoading(true);
           console.log(`Loading - ${transactionHash.hash}`);
           await transactionHash.wait();
           console.log(`Success - ${transactionHash.hash}`);
           setIsLoading(false);
+          swal("Account Created","Account Successfully Created.","success");
         } else{
           console.log("No ethereum object");
         }

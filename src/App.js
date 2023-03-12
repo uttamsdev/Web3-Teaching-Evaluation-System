@@ -31,6 +31,7 @@ import ViewFacultyFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedb
 
 const App = () => {
   const {signIn} = useContext(FeedbackContext);
+  // console.log("env: ",process.env.REACT_APP_SECRET_KEY);
   return (
     <div>
       <Routes>

@@ -9,10 +9,8 @@ const Account = () => {
 
     const handleLogin = async(event) => {
         const {username, password, role} =  createUsrData;
+        console.log("xd",username, password, role);
         event.preventDefault();
-        // const rolex = event.target.username.value;
-        // console.log("rolex",rolex);
-
         if(!username || !password || !role) return; //TODO: change this for next timee
         console.log(username, password, role);
         createUserAccount();
@@ -43,7 +41,7 @@ const Account = () => {
                     {
                         isLoading && <Loader></Loader>
                     }
-                    <input type="button" value="Create Account" className='rounded bg-[#039BE5] px-5 text-white py-2 cursor-pointer mt-5' />
+                    <input type="submit" value="Create Account" className='rounded bg-[#039BE5] px-5 text-white py-2 cursor-pointer mt-5' />
                 </form>
             </div>
         </div>
