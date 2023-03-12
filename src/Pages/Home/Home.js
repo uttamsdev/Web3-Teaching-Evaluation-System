@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import CryptoJS from "crypto-js";
+// import CryptoJS from "crypto-js";
+import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
 import loginLogo from "../../Pages/assets/avatar.png"
 import swal from 'sweetalert';
 import { FeedbackContext } from '../Context/Context';
-import { admin  } from '../../utils/Constant';
 const { ethereum } = window;
 
 
@@ -54,56 +54,60 @@ const Home = () => {
               const transactionsContract = createEthereumContract();
               const user = await transactionsContract.getUserAccount(username);
 
-              const decryptedPassword = CryptoJS.AES.decrypt(user[0]?.password, process.env.REACT_APP_SECRET_KEY).toString(
-                CryptoJS.enc.Utf8
-              );
+              // const decryptedPassword = CryptoJS.AES.decrypt(user[0]?.password, process.env.REACT_APP_SECRET_KEY).toString(
+              //   CryptoJS.enc.Utf8
+              // );
+              // let checkAdminRole;
+              // let checkFacultyRole;
+              // let checkStudentRole;
+              bcrypt.compare(password, user[0].password, (err, result) => {
+                if (result && user[0].role==='admin' && user[0].username===username) {
+                  navigate("/admin");
+                  localStorage.setItem("role","admin");
+                  setIsSignedIn(true);
+                  console.log('Password matched!');
+                } 
+                else if(result && user[0].role==='faculty' && user[0].username===username){
+                  navigate("/faculty");
+                  localStorage.setItem("role","faculty");
+                  setIsSignedIn(true);
+                }
+                else if(result && user[0].role==='student' && user[0].username===username){
+                  navigate("/student");
+                  localStorage.setItem("role","student");
+                  setIsSignedIn(true);
+                }
+                else {
+                  swal("Wrong Credential!", "Username or Password is wrong.!", "error");
+                  console.log('Password did not match.');
+                }
+              });
             //   setSingleUser(user);
             // setSingleUser(user);
               console.log("user: ",user);
-            //   console.log("singleUser:",singleUser);
-            
-    
-            // const checkAdminRole = username === admin.username && password === admin.password;
-            // console.log("constant username", admin.username);
-            // console.log("constant password: ",admin.password);
-            // console.log("username: ",username);
-            // console.log("password: ",password);
-            const  checkAdminRole = user[0]?.username === username && decryptedPassword === password && user[0]?.role === 'admin';
-            const  checkFacultyRole = user[0]?.username === username && decryptedPassword === password && user[0]?.role === 'faculty';
-            const  checkStudentRole = user[0]?.username === username && decryptedPassword === password && user[0]?.role === 'student';
-            // console.log("Check facultY: ",checkFaculty);
-            // console.log(user[0].username, user[0].password, user[0].role);
-            
-        // console.log("admin",adminCheck);
-        // let faculty = false;
-        // let student = false;
         
-        // const admin = users.find(user => user.email==username && user.role=="admin" && user.password==password);
-        // const faculty = users.find(user => user.email==username && user.role=="faculty" && user.password==password);
-        // const student = users.find(user => user.email==username && user.role=="student" && user.password==password);
+          
+
         
-        if(checkAdminRole){
-            navigate('/admin');
-            localStorage.setItem("role","admin");
-            // localStorage.setItem("isAdmin","true");
-            setIsSignedIn(true);
-        }
-        else if(checkFacultyRole){
-            navigate("/faculty");
-            localStorage.setItem("role","faculty");
-            // localStorage.setItem("isFaculty","true");
-            setIsSignedIn(true);
-        }
-        else if(checkStudentRole){
-            navigate("/student");
-            localStorage.setItem("role","student");
-            // localStorage.setItem("isStudent","true");
-            setIsSignedIn(true);
-        } 
-        else if(!checkAdminRole || !checkFacultyRole || !checkStudentRole){
-            swal("Wrong Credential!", "Username or Password is wrong.!", "error");
-        } 
-            }
+        // if(checkAdminRole){
+        //     navigate('/admin');
+        //     localStorage.setItem("role","admin");
+        //     setIsSignedIn(true);
+        // }
+        // else if(checkFacultyRole){
+        //     navigate("/faculty");
+        //     localStorage.setItem("role","faculty");
+        //     setIsSignedIn(true);
+        // }
+        // else if(checkStudentRole){
+        //     navigate("/student");
+        //     localStorage.setItem("role","student");
+        //     setIsSignedIn(true);
+        // } 
+        // else if(!checkAdminRole || !checkFacultyRole || !checkStudentRole){
+        //     swal("Wrong Credential!", "Username or Password is wrong.!", "error");
+        // } 
+     }
           } catch (error) {
             swal("User Doesn't Exist", "This user doesn't exist to blockchain", "error");
             console.log(error);

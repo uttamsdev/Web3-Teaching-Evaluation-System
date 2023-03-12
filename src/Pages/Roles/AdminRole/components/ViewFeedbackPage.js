@@ -89,7 +89,7 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
             <div className="left"></div>
             <div className="right"></div>
         </div>
-        <p className='text-center font-bold text-xl'>Performance of this course </p>
+        <p className='text-center font-bold text-xl'>Performance of the faculty. </p>
         </div>
         </div>
        </div>

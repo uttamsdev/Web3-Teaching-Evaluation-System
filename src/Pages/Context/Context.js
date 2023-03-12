@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { createContext, useEffect, useState } from "react";
-import CryptoJS from "crypto-js";
+import bcrypt from 'bcryptjs';
 import swal from "sweetalert";
 import { contractABI, contractAddress } from "../../utils/Constant";
 const { ethereum } = window;
@@ -8,13 +8,6 @@ const { ethereum } = window;
 export const FeedbackContext = createContext();
 
 console.log(contractABI, contractAddress);
-// const createEthereumContract = () => {
-//   const provider = new ethers.providers.Web3Provider(ethereum);
-//   const signer = provider.getSigner();
-//   const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
-
-//   return transactionsContract;
-// };
 
 export const FeedbackProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -32,13 +25,28 @@ export const FeedbackProvider = ({ children }) => {
   const [feedbackByCourseCode, setFeedbackByCourseCode] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [singleUser, setSingleUser] = useState([]);
+  const [hashedPassword, setHashedPassword] = useState("");
 
 
-  //Encrypt password cuntion
-  const  encryptPassword = () =>  {
-    const encryptedPassword = CryptoJS.AES.encrypt("uttamsaha", process.env.REACT_APP_SECRET_KEY).toString();
-    console.log(encryptedPassword);
-  }
+  //bcrypt password
+  const handleEncode = () => {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash("uttamsaha", salt, (err, hash) => {
+        // setHashedPassword(hash);
+        console.log(hash);
+      });
+    });
+  };
+
+  const handleDecode = () => {
+    bcrypt.compare("test", hashedPassword, (err, result) => {
+      if (result) {
+        console.log('Password matched!');
+      } else {
+        console.log('Password did not match.');
+      }
+    });
+  };
       //getting form input data
       const createAccountHandleChange = (e, name) => {
         setCreateUserData((prevState) => ({...prevState, [name]: e.target.value}));
@@ -86,13 +94,6 @@ export const FeedbackProvider = ({ children }) => {
           setCurrentAccount(accounts[0]);
       } catch (error) {
           console.log(error);
-          // const createEthereumContract = () => {
-          //   const provider = new ethers.providers.Web3Provider(ethereum);
-          //   const signer = provider.getSigner();
-          //   const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
-          
-          //   return transactionsContract;
-          // };
           throw new Error("No ethereum object.");
       }
   }
@@ -102,41 +103,30 @@ export const FeedbackProvider = ({ children }) => {
       try {
         if(ethereum){
           const {username, password, role} =  createUsrData;
-          const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.REACT_APP_SECRET_KEY).toString();
-          const transactionsContract = createEthereumContract();
-          const transactionHash = await transactionsContract.createUserAccount(username, encryptedPassword, role);
-          setIsLoading(true);
-          console.log(`Loading - ${transactionHash.hash}`);
-          await transactionHash.wait();
-          console.log(`Success - ${transactionHash.hash}`);
-          setIsLoading(false);
-          swal("Account Created","Account Successfully Created.","success");
+          // const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.REACT_APP_SECRET_KEY).toString();
+              bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(password, salt, async(err, hash) => {
+                // setHashedPassword(hash);
+                const transactionsContract = createEthereumContract();
+                const transactionHash = await transactionsContract.createUserAccount(username, hash, role);
+                setIsLoading(true);
+                console.log(`Loading - ${transactionHash.hash}`);
+                await transactionHash.wait();
+                console.log(`Success - ${transactionHash.hash}`);
+                setIsLoading(false);
+                swal("Account Created","Account Successfully Created.","success");
+              });
+            });
+         
         } else{
           console.log("No ethereum object");
         }
-      } catch (error) {
+      } catch (error){
         console.log(error);
         throw new Error("No ethereum object");
       }
     }
 
-    //get user account / login user account
-    // const getLogin= async() => {
-    //   // const {username, password} = userLoginData;
-    //   // try {
-    //   //   if(ethereum){
-    //   //     const transactionsContract = createEthereumContract();
-    //   //     const user = await transactionsContract.getUserAccount(username);
-    //   //     setSingleUser(user);
-    //   //     console.log("username: ",user);
-    //   //     console.log("singleUser:",singleUser);
-
-    //   //   }
-    //   // } catch (error) {
-    //   //   console.log(error);
-    //   //   throw new Error("No ethereum object");
-    //   // }
-    // }
 
     //add courses
     const AddCourse = async() => {
@@ -241,7 +231,10 @@ export const FeedbackProvider = ({ children }) => {
   
     useEffect(() => {
       checkIfWalletIsConnected();
-      encryptPassword();
+      // handleEncode();
+      // handleEncode();
+      // encryptPassword();
+      // decryptPassword();
       // console.log(formData); 
       // getCourses();
       // console.log("all courses:",allCourses);
