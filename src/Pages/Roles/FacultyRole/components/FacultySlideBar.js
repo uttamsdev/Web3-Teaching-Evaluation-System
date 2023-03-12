@@ -28,7 +28,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <p>Home</p>
                     </div>
                 </Link>
-                <Link to='/faculty/view-courses'>
+                {/* <Link to='/faculty/view-courses'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/faculty/view-courses"
                             ? 'bg-[#039BE5] text-white rounded-r-full'
@@ -38,7 +38,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         </div>
                         <p>My Courses</p>
                     </div>
-                </Link>
+                </Link> */}
                 <Link to='/faculty/view-feedbacks'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/faculty/view-feedbacks"

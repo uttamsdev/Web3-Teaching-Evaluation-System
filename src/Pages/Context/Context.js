@@ -62,7 +62,7 @@ export const FeedbackProvider = ({ children }) => {
       } else {
           console.log("No account found");
       }
-      console.log(accounts);
+      console.log("accounts: ", accounts);
       } catch (error) {
           console.log(error);
           throw new Error("No ethereum object.");
@@ -204,7 +204,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected}}>
         {children}
       </FeedbackContext.Provider>
     )
