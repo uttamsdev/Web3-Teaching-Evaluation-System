@@ -1,8 +1,5 @@
 import React, { useContext } from 'react';
 import {AiOutlineDashboard} from 'react-icons/ai'
-import {MdOutlineFeedback} from 'react-icons/md';
-import {BiBookReader} from 'react-icons/bi';
-import {BsSpeedometer2} from 'react-icons/bs';
 import { FeedbackContext } from '../../../Context/Context';
 import userLogo from "../../../assets/faculty.webp"
 import FacultyCourses from './FacultyCourses';

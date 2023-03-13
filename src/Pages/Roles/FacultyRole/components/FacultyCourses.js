@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import {VscPreview} from 'react-icons/vsc';
 import { FeedbackContext } from '../../../Context/Context';
 
 const FacultyCourses = () => {
@@ -45,11 +44,6 @@ const FacultyCourses = () => {
                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <div className="flex items-center justify-center">
                   <div className="flex-shrink-0 w-10 h-10">
-                    <img
-                      className="w-full h-full rounded-full"
-                      src="https://img.favpng.com/1/20/4/computer-icons-teacher-professor-education-lecturer-png-favpng-1BNAzeu8934LbrrczvkSnnZ2B.jpg"
-                      alt=""
-                    />
                   </div>
                   <div className="ml-3">
                     <p className="text-gray-900 whitespace-no-wrap">

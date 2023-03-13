@@ -30,6 +30,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
     const [hoverStar9, setHoverStar9] = useState(undefined);
     const [number10, setNumber10] = useState(0);
     const [hoverStar10, setHoverStar10] = useState(undefined);
+    
 
     const handleText = (number, hoverStar) => {
         // console.log("Number:",number);
@@ -73,6 +74,9 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
           console.log(`Success - ${transactionHash.hash}`);
           setIsClicked(false);
           setIsLoading(false);
+          localStorage.setItem(courseCodeState, true);
+          // await checkFeedback(courseCodeState);
+          // console.log("testing here: ",feedbackState);
           
           if(transactionHash) {
             swal("Feedback Submitted", "Your feedback successfully submitted","success");
@@ -245,16 +249,8 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
            }
             <button type='submit' className='btn bg-[#039BE5] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
            </form>
-
-          
-
-             
           
       </div>
-
-
-
-        {/* //about course */}
 
 </div>
   )

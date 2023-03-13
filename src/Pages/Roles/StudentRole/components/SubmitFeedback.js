@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import {AiOutlineFileAdd} from "react-icons/ai";
 import { FeedbackContext } from '../../../Context/Context';
 import FeedbackPage from './FeedbackPage';
-import StudentCourses from './StudentCourses';
 
 const SubmitFeedback = () => {
   const {getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked} = useContext(FeedbackContext);
   const [facultyAddress, setFacultyAddress] = useState("");
   const [courseCodeState, setCourseCodeState] = useState("");
-  // const [isClicked, setIsClicked] = useState(false);
   
   const openFeedback = (to, courseCode) => {
     setIsClicked(true); //TODO: set isclicked to context api for close component is feedback submitted.
@@ -18,7 +16,6 @@ const SubmitFeedback = () => {
   }
   useEffect(()=>{
     getStudentCourses();
-    // console.log(studentEnrolledCourse);
   },[])
   return (
     <div className='bg-[#F5F5F5] min-h-screen h-auto'>
@@ -77,7 +74,11 @@ const SubmitFeedback = () => {
                 <p class="text-gray-900 whitespace-no-wrap">{course?.faculty}</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap"><button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button></p>
+                <p class="text-gray-900 whitespace-no-wrap">
+                  {
+                    localStorage.getItem(course.courseCode) ?  <button className='btn font-semibold leading-tight rounded-full bg-gray-200 text-gray-00 px-4 py-2 '>Completed</button> : <button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button> 
+                  }
+                </p>
               </td>
                 </tr>)
             }

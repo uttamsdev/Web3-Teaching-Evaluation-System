@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 import React, { useContext, useEffect } from 'react'
 import  { useState } from 'react';
 import Loader from '../../../Shared/Loader';
+import {VscPreview} from 'react-icons/vsc';
+import { HiFolderAdd } from "react-icons/hi";
+import { AiOutlineAppstoreAdd } from  "react-icons/ai";
 
 
 import { useTable } from 'react-table';
@@ -80,8 +83,6 @@ const CourseEnroll = () => {
   };
 
   const getEnrollToCourse = async () => {
-    // event.preventDefault();
-
     const to = await selectedRowData.to;
     const courseCode = await selectedRowData.courseCode;
     const courseTitle = await selectedRowData.courseTitle;
@@ -90,7 +91,7 @@ const CourseEnroll = () => {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
   
-      const EnrollContract = new ethers.Contract("0x12504118e01f32c22F0631f610A38065A131f5b5", abi, signer);
+      const EnrollContract = new ethers.Contract("0xD71E52aFFbaF500dc2bDb8C01886e773524d5f01", abi, signer);
       const enrollHash = await EnrollContract.getEnroll(to, courseCode, courseTitle, faculty);
       setIsLoading(true)
       console.log(`Loading - ${enrollHash.hash}`);
@@ -101,12 +102,10 @@ const CourseEnroll = () => {
     
   }
 
-  // console.log("selected:", selectedRowData);
-
-  
-
   return (
     <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+      <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineAppstoreAdd className='ml-5 mr-3 w-6 h-6'/>Course Enrollment</p>
+      <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>You have to Click on the course row to get enrolled  into the course. Thank you. </p>
      <div className='inline-block min-w-full shadow-md rounded-lg overflow-hidden'>
      <table {...getTableProps()} className="min-w-full leading-normal">
         <thead>
@@ -154,7 +153,6 @@ const CourseEnroll = () => {
         isLoading && <Loader></Loader>
       }
 
-      {/* <pre>Selected row: {JSON.stringify(selectedRowData, null, 2)}</pre> */}
     </div>
   )
 }

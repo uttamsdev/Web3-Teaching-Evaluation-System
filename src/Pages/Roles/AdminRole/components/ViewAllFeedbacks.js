@@ -16,12 +16,6 @@ const ViewAllFeedbacks = () => {
             const feedbacks = await transactionsContract.getFeedbackByAddress(courseCode);
             setFeedbackByCourseCode(feedbacks);
             console.log(feedbackByCourseCode);
-            // setIsLoading(true);
-            // console.log(`Loading - ${transactionHash.hash}`);
-            // await transactionHash.wait();
-            // console.log(`Success - ${transactionHash.hash}`);
-            // swal("Course Successfully Added", `Transaction hash: ${transactionHash.hash}`, "success");
-            // setIsLoading(false);
           } else{
             console.log("No ethereum object");
           }
@@ -33,7 +27,6 @@ const ViewAllFeedbacks = () => {
     }
     useEffect(()=>{
         getCourses();
-        // console.log("All courses,",allCourses);
     },[])
     return (
         <div className='bg-[#F5F5F5] min-h-screen rounded-b-3xl'>
@@ -101,9 +94,7 @@ const ViewAllFeedbacks = () => {
     </div>
   </div>
 </div>
-    {/* {
-      isClicked && <FeedbackPage facultyAddress={facultyAddress} courseCodeState={courseCodeState}></FeedbackPage>
-    } */}
+
     {
         isClicked && <ViewFeedbackPage feedbackByCourseCode={feedbackByCourseCode}></ViewFeedbackPage>
     }

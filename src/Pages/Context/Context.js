@@ -15,7 +15,6 @@ export const FeedbackProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(null);
   const signIn = localStorage.getItem("role");
   const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
-  const  [userLoginData, setUserLoginData] = useState({username: '', password: ''});
   const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''});
   const [allCourses, setAllCourses] = useState([]);
   const [facultyCourses, setFacultyCourses] = useState([]);
@@ -24,7 +23,6 @@ export const FeedbackProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [feedbackByCourseCode, setFeedbackByCourseCode] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-  const [singleUser, setSingleUser] = useState([]);
   const [hashedPassword, setHashedPassword] = useState("");
 
 
@@ -52,9 +50,6 @@ export const FeedbackProvider = ({ children }) => {
         setCreateUserData((prevState) => ({...prevState, [name]: e.target.value}));
     }
 
-    const loginAccountHandleChange = (e, name) => {
-      setUserLoginData((prevState) => ({...prevState, [name]: e.target.value}));
-  }
     const courseAddHandleChange = (e, name) => {
       setAddCourseData((prevState) => ({...prevState, [name]: e.target.value}));
   }
@@ -103,10 +98,8 @@ export const FeedbackProvider = ({ children }) => {
       try {
         if(ethereum){
           const {username, password, role} =  createUsrData;
-          // const encryptedPassword = CryptoJS.AES.encrypt(password, process.env.REACT_APP_SECRET_KEY).toString();
               bcrypt.genSalt(10, (err, salt) => {
               bcrypt.hash(password, salt, async(err, hash) => {
-                // setHashedPassword(hash);
                 const transactionsContract = createEthereumContract();
                 const transactionHash = await transactionsContract.createUserAccount(username, hash, role);
                 setIsLoading(true);
@@ -228,21 +221,16 @@ export const FeedbackProvider = ({ children }) => {
     }
   
   
-  
     useEffect(() => {
       checkIfWalletIsConnected();
       // handleEncode();
-      // handleEncode();
-      // encryptPassword();
-      // decryptPassword();
-      // console.log(formData); 
-      // getCourses();
-      // console.log("all courses:",allCourses);
+    // console.log("x",feedbackState);
+
     }, []);
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, loginAccountHandleChange, userLoginData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks}}>
         {children}
       </FeedbackContext.Provider>
     )

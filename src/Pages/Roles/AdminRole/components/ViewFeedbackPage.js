@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { FeedbackContext } from '../../../Context/Context';
-// Import react-circular-progressbar module and styles
 import {
   CircularProgressbar,
   CircularProgressbarWithChildren,
@@ -8,19 +7,11 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-// Animation
-// import { easeQuadInOut } from "d3-ease";
-// import AnimatedProgressProvider from "./AnimatedProgressProvider";
-// import ChangingProgressProvider from "./ChangingProgressProvider";
-
-// Radial separators
-// import RadialSeparators from "./RadialSeparators";
 
 const ViewFeedbackPage = ({feedbackByCourseCode}) => {
 
   let sum = 0;
   const calculateRating = feedbackByCourseCode?.map(rating => ({rating:rating.rating}));
-  // const sum = calculateRating?.map(rating => rating)
   console.log("calculate rating.",calculateRating);
 
   for(let rating of calculateRating){
@@ -32,11 +23,7 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
   if(isNaN(performancePercentage)) {
     performancePercentage = 0;
   }
-  console.log("p: ",performancePercentage);
 
-  console.log("total sum is: ", sum);
-    // const {createEthereumContract} = useContext(FeedbackContext);
-    // console.log("Course code from view feedback page: ",courseCode);
   return (
     <div>
         <p className='text-center text-[#16728e]  text-lg md:text-lg py-3 border-l-8 border-[#5bc0de]  mt-4 bg-[#4bc3e41d] rounded-md w-9/12 md:w-6/12 mx-auto'><b className="font-bold">Info: </b>This table below shows the feedbacks and rating evaluate and send by the students: .</p>

@@ -15,7 +15,7 @@ import {RiLogoutCircleLine} from 'react-icons/ri';
 
 const TopBar = ({ showNav, setShowNav }) => {
     const logOut = () => {
-        localStorage.removeItem("role");
+        localStorage.clear();
         window.location.reload();
     }
     return (

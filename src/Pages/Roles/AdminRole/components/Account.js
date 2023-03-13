@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import {VscGitPullRequestCreate} from "react-icons/vsc"
-import swal from 'sweetalert';
 import { FeedbackContext } from '../../../Context/Context'
 import Loader from '../../../Shared/Loader';
 
@@ -11,7 +10,7 @@ const Account = () => {
         const {username, password, role} =  createUsrData;
         console.log("xd",username, password, role);
         event.preventDefault();
-        if(!username || !password || !role) return; //TODO: change this for next timee
+        if(!username || !password || !role) return; 
         console.log(username, password, role);
         createUserAccount();
 

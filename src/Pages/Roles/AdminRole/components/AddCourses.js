@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import {VscGitPullRequestCreate} from "react-icons/vsc"
-import swal from 'sweetalert';
 import { FeedbackContext } from '../../../Context/Context'
 import Loader from '../../../Shared/Loader';
 
@@ -8,13 +7,10 @@ const AddCourses = () => {
     const  {courseAddHandleChange, addCourseData, AddCourse, isLoading} = useContext(FeedbackContext);
 
     const handleAddCourse = async(event) => {
-        // const {username, password, role} =  createUsrData;
         const {facultyAddress, facultyName, courseCode, courseTitle} = addCourseData;
         event.preventDefault();
-        // const rolex = event.target.username.value;
-        // console.log("rolex",rolex);
 
-        if(!facultyAddress || !facultyName || !courseCode || !courseTitle) return; //TODO: change this for next timee
+        if(!facultyAddress || !facultyName || !courseCode || !courseTitle) return; 
         AddCourse();
         console.log(facultyAddress, facultyName, courseCode, courseTitle);
 

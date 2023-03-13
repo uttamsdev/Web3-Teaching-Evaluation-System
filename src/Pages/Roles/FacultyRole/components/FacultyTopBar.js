@@ -14,7 +14,7 @@ import UserImage from '../../../assets/faculty.webp'
 
 const StudentTopBar = ({ showNav, setShowNav }) => {
     const logOut = () => {
-        localStorage.removeItem("role");
+        localStorage.clear();
         window.location.reload();
     }
     return (

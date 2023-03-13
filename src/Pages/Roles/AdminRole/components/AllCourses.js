@@ -3,7 +3,6 @@ import {MdOutlinePreview} from "react-icons/md";
 import { FeedbackContext } from '../../../Context/Context';
 const AllCourses = () => {
     const {getCourses, allCourses} = useContext(FeedbackContext);
-    const courses = [{username: "uttam", pass:"123"}];
     console.log(allCourses);
 
     useEffect(()=>{
@@ -69,7 +68,6 @@ const AllCourses = () => {
 </div>
 </div>
 </div>
-    // </div>
     )
 }
 
