@@ -1,5 +1,20 @@
 import React, { useContext } from 'react'
 import { FeedbackContext } from '../../../Context/Context';
+// Import react-circular-progressbar module and styles
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+
+// Animation
+// import { easeQuadInOut } from "d3-ease";
+// import AnimatedProgressProvider from "./AnimatedProgressProvider";
+// import ChangingProgressProvider from "./ChangingProgressProvider";
+
+// Radial separators
+// import RadialSeparators from "./RadialSeparators";
 
 const ViewFeedbackPage = ({feedbackByCourseCode}) => {
 
@@ -83,13 +98,19 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
 </div>
         <div className='flex justify-center items-center pb-24'>
         <div className='h-72 w-96 bg-white shadow-md rounded-xl'>
-        <div className="progress flex justify-center items-center mx-auto mt-12">
-            <span className="title timer " data-from="0" data-to="85" data-speed="1800">{performancePercentage}</span>
-            <div className="overlay"></div>
-            <div className="left"></div>
-            <div className="right"></div>
-        </div>
-        <p className='text-center font-bold text-xl'>Performance of the faculty. </p>
+        <CircularProgressbar className='w-40 h-40 mt-12'
+        value={performancePercentage}
+        text={`${performancePercentage}%`}
+        background
+        backgroundPadding={6}
+        styles={buildStyles({
+          backgroundColor: "#3e98c7",
+          textColor: "#fff",
+          pathColor: "#fff",
+          trailColor: "transparent"
+        })}
+      />
+        <p className='text-center font-bold text-xl mt-2'>Performance of the faculty. </p>
         </div>
         </div>
        </div>
