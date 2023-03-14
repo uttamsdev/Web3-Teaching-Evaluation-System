@@ -1,3 +1,3 @@
 import abi from './abi.json';
 export const contractABI = abi; //for hardhat abi.abi
-export const contractAddress = '0xD71E52aFFbaF500dc2bDb8C01886e773524d5f01';
+export const contractAddress = '0xFCB66de53833847446e6E685DE93212220939CA8';
