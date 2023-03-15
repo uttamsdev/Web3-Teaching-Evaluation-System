@@ -4,7 +4,7 @@ import { FeedbackContext } from '../../../Context/Context';
 import ViewFeedbackPage from './ViewFeedbackPage';
 const {ethereum} = window;
 const ViewAllFeedbacks = () => {
-    const {getCourses, allCourses, isClicked, setIsClicked, createEthereumContract, feedbackByCourseCode,setFeedbackByCourseCode} = useContext(FeedbackContext);
+    const {getAllCoursesByAdmin, allCoursesOfAdmin, isClicked, setIsClicked, createEthereumContract, feedbackByCourseCode,setFeedbackByCourseCode} = useContext(FeedbackContext);
     const [courseCode, setCourseCode] = useState("");
 
     const openFeedback = async(courseCode) => {
@@ -25,7 +25,7 @@ const ViewAllFeedbacks = () => {
      
     }
     useEffect(()=>{
-        getCourses();
+      getAllCoursesByAdmin();
     },[])
     return (
         <div className='bg-[#F5F5F5] min-h-screen rounded-b-3xl'>
@@ -64,7 +64,7 @@ const ViewAllFeedbacks = () => {
           </thead>
           <tbody>
             {
-                allCourses?.map(course => <tr>
+                allCoursesOfAdmin?.map(course => <tr>
                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <div className="flex items-center justify-center">
                   <div className="flex-shrink-0 w-10 h-10">

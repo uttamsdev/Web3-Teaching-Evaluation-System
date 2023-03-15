@@ -28,20 +28,7 @@ const CourseEnroll = () => {
     courseTitle: course.courseTitle,
     facultyName: course.facultyName
   }))
-  // const data = [
-  //   {
-  //     courseCode: 'CSE101',
-  //     courseTitle: 'Computer Programming',
-  //     faculty: "Md Raisul Islam",
-      
-  //   },
-  //   {
-  //     courseCode: 'CSE434',
-  //     courseTitle: 'Computer Programming',
-  //     faculty: "Md Raisul Islam",
-      
-  //   }
-  // ]
+ 
 
   const columns = React.useMemo(
     () => [
@@ -90,7 +77,7 @@ const CourseEnroll = () => {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
   
-      const EnrollContract = new ethers.Contract("0xFCB66de53833847446e6E685DE93212220939CA8", abi, signer);
+      const EnrollContract = new ethers.Contract("0x38F2b154B10210b422f0A431b4efb476966C04eC", abi, signer);
       const enrollHash = await EnrollContract.getEnroll(to, courseCode, courseTitle, faculty);
       setIsLoading(true)
       console.log(`Loading - ${enrollHash.hash}`);

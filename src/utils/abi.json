@@ -113,6 +113,41 @@
 	},
 	{
 		"inputs": [],
+		"name": "getAllCourseOfAdmin",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "facultyName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseCode",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "courseTitle",
+						"type": "string"
+					}
+				],
+				"internalType": "struct StudentFeadbacks.Course[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getAllCourses",
 		"outputs": [
 			{

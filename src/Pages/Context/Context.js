@@ -21,6 +21,7 @@ export const FeedbackProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [feedbackByCourseCode, setFeedbackByCourseCode] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [allCoursesOfAdmin, setAllCoursesOfAdmin] = useState([]);
   const [hashedPassword, setHashedPassword] = useState("");
 
 
@@ -217,18 +218,33 @@ export const FeedbackProvider = ({ children }) => {
         throw new Error("No ethereum object");
       }
     }
+
+    //get all courses by admin
+    const getAllCoursesByAdmin = async() => {
+      try {
+        if(ethereum){
+          const transactionsContract = createEthereumContract();
+          const courses = await transactionsContract.getAllCourseOfAdmin();
+          setAllCoursesOfAdmin(courses);
+
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error("No ethereum object");
+      }
+    }
   
   
     useEffect(() => {
       checkIfWalletIsConnected();
-      // handleEncode();
+      handleEncode();
     // console.log("x",feedbackState);
 
     }, []);
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks}}>
+      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks, getAllCoursesByAdmin, allCoursesOfAdmin}}>
         {children}
       </FeedbackContext.Provider>
     )

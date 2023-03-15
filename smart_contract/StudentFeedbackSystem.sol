@@ -44,10 +44,13 @@ contract StudentFeadbacks{
     mapping(string => TakenCourse) takenCourses; 
     mapping(string => Feedback[]) studentFeedbacks;
     mapping(address=> mapping(string=>bool)) feedbackTrack; 
+    mapping(address=> mapping(string=>bool)) courseEnrollTrack; 
     mapping(address => bool) existfaculty;  
     mapping(address => Course[]) facultyCourses;
+    mapping(address => Course[]) allCourseOfAdmin;
     mapping(string => UserAccount[]) userAccount;
     mapping(address => CourseEnroll[]) courseEnroll; // student's assigned courses
+    
     
     Course[] allCourses;
     Faculty[] private feedbacks;
@@ -63,6 +66,7 @@ contract StudentFeadbacks{
         facultyCourses[_to].push(Course(_to, _facultyName, _courseCode, _courseTitle));
         takenCourses[_courseCode] = TakenCourse(_to,_facultyName, _courseCode, _courseTitle, true); 
         allCourses.push(Course(_to, _facultyName,_courseCode, _courseTitle));
+        allCourseOfAdmin[owner].push(Course(_to, _facultyName, _courseCode, _courseTitle));
     }
 
     function submitFeedback(address _to, string memory _courseCode, string memory _rating, string memory _comment) public{
@@ -112,11 +116,18 @@ contract StudentFeadbacks{
   }
 
    function getEnroll(address _facultyAddress, string memory _courseCode, string memory _courseTitle, string memory _faculty) public {
-      courseEnroll[msg.sender].push(CourseEnroll(_facultyAddress, _courseCode, _courseTitle, _faculty));
+    require(msg.sender!=owner, "You are admin you can not register course");
+    require(courseEnrollTrack[msg.sender][_courseCode]==false, "Your already enrolled into this course"); 
+    courseEnroll[msg.sender].push(CourseEnroll(_facultyAddress, _courseCode, _courseTitle, _faculty));
+    courseEnrollTrack[msg.sender][_courseCode] = true; //keeping couse enroll track
   }
 
   function getEnrolledCourses() public view returns (CourseEnroll[] memory){
       return courseEnroll[msg.sender];
+  }
+
+  function getAllCourseOfAdmin() public  view onlyOwner  returns(Course[] memory){
+      return allCourseOfAdmin[owner];
   }
 
 }

@@ -7,13 +7,13 @@ import {FaUsers} from "react-icons/fa";
 import { FeedbackContext } from '../../../Context/Context';
 
 const Dashboard = () => {
-    const {getCourses, allCourses, allUsers, getAllUsers, getAllFeedback, allFeedbacks} = useContext(FeedbackContext);
+    const {getAllCoursesByAdmin, allCoursesOfAdmin, allUsers, getAllUsers, getAllFeedback, allFeedbacks} = useContext(FeedbackContext);
 
 
     const faculties = allUsers?.filter(user => user.role==='faculty');
     const students = allUsers?.filter(user => user.role==='student');
     useEffect(()=>{
-        getCourses();
+        getAllCoursesByAdmin();
         getAllUsers();
         getAllFeedback();
         console.log("all users: ",allUsers);
@@ -35,7 +35,7 @@ const Dashboard = () => {
                 </div>
                 <div className='rounded-lg  bg-white h-40 shadow-lg w-80'>
                     <BiBookReader className='w-12 h-12 text-[#039BE5] mx-auto mt-3'/>
-                    <h1 className='text-4xl font-bold text-center mt-2 text-orange-500'>{allCourses?.length}</h1>
+                    <h1 className='text-4xl font-bold text-center mt-2 text-orange-500'>{allCoursesOfAdmin?.length}</h1>
                     <p className='text-xl text-center mt-1'>Total Courses</p>
                 </div>
                 <div className='rounded-lg  bg-white h-40 shadow-lg w-80'>

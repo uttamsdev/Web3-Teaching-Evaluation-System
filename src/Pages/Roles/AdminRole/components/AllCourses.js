@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import {MdOutlinePreview} from "react-icons/md";
 import { FeedbackContext } from '../../../Context/Context';
 const AllCourses = () => {
-    const {getCourses, allCourses} = useContext(FeedbackContext);
+    const {getAllCoursesByAdmin, allCoursesOfAdmin} = useContext(FeedbackContext);
 
     useEffect(()=>{
-        getCourses();
+      getAllCoursesByAdmin();
     },[])
     return (
         <div className='bg-[#F5F5F5] calc-height rounded-b-3xl'>
@@ -39,7 +39,7 @@ const AllCourses = () => {
           </thead>
           <tbody>
             {
-                allCourses?.map(course => <tr>
+                allCoursesOfAdmin?.map(course => <tr>
                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 w-10 h-10">
