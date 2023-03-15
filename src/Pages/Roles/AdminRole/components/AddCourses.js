@@ -12,7 +12,6 @@ const AddCourses = () => {
 
         if(!facultyAddress || !facultyName || !courseCode || !courseTitle) return; 
         AddCourse();
-        console.log(facultyAddress, facultyName, courseCode, courseTitle);
 
     }
     return (

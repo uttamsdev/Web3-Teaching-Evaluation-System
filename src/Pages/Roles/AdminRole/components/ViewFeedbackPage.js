@@ -12,7 +12,6 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
 
   let sum = 0;
   const calculateRating = feedbackByCourseCode?.map(rating => ({rating:rating.rating}));
-  console.log("calculate rating.",calculateRating);
 
   for(let rating of calculateRating){
     let numberRating = parseFloat(rating.rating);

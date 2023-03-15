@@ -10,7 +10,6 @@ const SubmitFeedback = () => {
   
   const openFeedback = (to, courseCode) => {
     setIsClicked(true); //TODO: set isclicked to context api for close component is feedback submitted.
-    console.log("tox:",to);
     setFacultyAddress(to);
     setCourseCodeState(courseCode);
   }
@@ -22,32 +21,32 @@ const SubmitFeedback = () => {
     <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineFileAdd className='ml-5 mr-3 w-6 h-6'/>Submit Feedback</p>
     <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to give feedback. </p>
     <div>
-       <div class="container mx-auto px-4 sm:px-8">
-        <div class="py-8">
-    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
+       <div className="container mx-auto px-4 sm:px-8">
+        <div className="py-8">
+    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
       <div
-        class="inline-block w-3/4 shadow-md rounded-lg overflow-hidden"
+        className="inline-block w-3/4 shadow-md rounded-lg overflow-hidden"
       >
-        <table class=" w-full leading-normal">
+        <table className=" w-full leading-normal">
           <thead>
             <tr>
               <th
-                class="text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className="text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                Course Code
               </th>
               <th
-                class="text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className="text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                 Course Title
               </th>
               <th
-                class=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                 Faculty
               </th>
               <th
-                class=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                 Action
               </th>
@@ -56,27 +55,27 @@ const SubmitFeedback = () => {
           <tbody>
             {
                 studentEnrolledCourse?.map(course => <tr>
-                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <div class="flex items-center justify-center">
-                  <div class="flex-shrink-0 w-10 h-10">
+                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <div className="flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 h-10">
                   </div>
-                  <div class="ml-3">
-                    <p class="text-gray-900 whitespace-no-wrap">
+                  <div className="ml-3">
+                    <p className="text-gray-900 whitespace-no-wrap">
                      {course?.courseCode}
                     </p>
                   </div>
                 </div>
               </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap">{course?.courseTitle}</p>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+                <p className="text-gray-900 whitespace-no-wrap">{course?.courseTitle}</p>
               </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap">{course?.faculty}</p>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+                <p className="text-gray-900 whitespace-no-wrap">{course?.faculty}</p>
               </td>
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p class="text-gray-900 whitespace-no-wrap">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+                <p className="text-gray-900 whitespace-no-wrap">
                   {
-                    localStorage.getItem(course.courseCode) ?  <button className='btn font-semibold leading-tight rounded-full bg-gray-200 text-gray-00 px-4 py-2 '>Completed</button> : <button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button> 
+                    localStorage.getItem(course.courseCode) ?  <button className='btn font-semibold leading-tight rounded-full bg-gray-200 text-gray-00 px-4 py-2 ' disabled>Completed</button> : <button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.facultyAddress, course.courseCode)}}>Give Feedback</button> 
                   }
                 </p>
               </td>

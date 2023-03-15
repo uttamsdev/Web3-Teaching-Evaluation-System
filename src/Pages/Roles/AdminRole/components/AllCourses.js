@@ -3,7 +3,6 @@ import {MdOutlinePreview} from "react-icons/md";
 import { FeedbackContext } from '../../../Context/Context';
 const AllCourses = () => {
     const {getCourses, allCourses} = useContext(FeedbackContext);
-    console.log(allCourses);
 
     useEffect(()=>{
         getCourses();

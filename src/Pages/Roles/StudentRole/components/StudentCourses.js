@@ -6,7 +6,6 @@ const StudentCourses = () => {
 
   useEffect(()=>{
     getStudentCourses();
-    // console.log(studentEnrolledCourse);
   },[])
   return (
     <div className='bg-[#F5F5F5]  rounded-b-3xl'>

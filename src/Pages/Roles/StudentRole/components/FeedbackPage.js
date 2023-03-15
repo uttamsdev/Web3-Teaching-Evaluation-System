@@ -33,7 +33,6 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
     
 
     const handleText = (number, hoverStar) => {
-        // console.log("Number:",number);
         switch (number || hoverStar) {
           case 0:
             return "Evaluate";
@@ -51,8 +50,6 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
             return " Pending";
         }
       };
-    console.log("faculty address from feedback page: ", facultyAddress);
-    console.log("Course Code from feedback page: ",courseCodeState);
 
 
     const  handleFeedbackSubmit = async(event) => {
@@ -61,30 +58,26 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
         const ratingToFixed = rating.toFixed(2);
 
         const comment = event.target.comment.value;
-        console.log("comment: ",comment);
-        console.log("rating", ratingToFixed);
 
-        if(ethereum){
-          const transactionsContract = createEthereumContract();
-          const transactionHash = await transactionsContract.submitFeedback(facultyAddress, courseCodeState, ratingToFixed, comment);
-          setIsLoading(true);
-          
-          console.log(`Loading - ${transactionHash.hash}`);
-          await transactionHash.wait();
-          console.log(`Success - ${transactionHash.hash}`);
-          setIsClicked(false);
-          setIsLoading(false);
-          localStorage.setItem(courseCodeState, true);
-          // await checkFeedback(courseCodeState);
-          // console.log("testing here: ",feedbackState);
-          
-          if(transactionHash) {
-            swal("Feedback Submitted", "Your feedback successfully submitted","success");
-          } else {
-            swal("Feedback already submitted","You have already submitted feedback for this course.","error");
+        try {
+          if(ethereum){
+            const transactionsContract = createEthereumContract();
+            const transactionHash = await transactionsContract.submitFeedback(facultyAddress, courseCodeState, ratingToFixed, comment);
+            setIsLoading(true);
+            
+            console.log(`Loading - ${transactionHash.hash}`);
+            await transactionHash.wait();
+            console.log(`Success - ${transactionHash.hash}`);
+            setIsClicked(false);
+            setIsLoading(false);
+            localStorage.setItem(courseCodeState, true);
+            
+            if(transactionHash) {
+              swal("Feedback Submitted", "Your feedback successfully submitted","success");
+            }
           }
-        } else{
-          console.log("No ethereum object");
+        } catch (err) {
+          swal("Feedback Already Submitted","You already submitted feedback for this course.","error");
         }
     }
   return (

@@ -8,10 +8,8 @@ const Account = () => {
 
     const handleLogin = async(event) => {
         const {username, password, role} =  createUsrData;
-        console.log("xd",username, password, role);
         event.preventDefault();
         if(!username || !password || !role) return; 
-        console.log(username, password, role);
         createUserAccount();
 
     }

@@ -52,8 +52,6 @@ const Home = () => {
                   console.log('Password did not match.');
                 }
               });
-
-              console.log("user: ",user);
    
      }
           } catch (error) {

@@ -15,7 +15,6 @@ const CourseEnroll = () => {
   const { ethereum } = window;
   const [isLoading, setIsLoading] = useState(false);
   const { getCourses, allCourses} = useContext(FeedbackContext);
-  console.log("all courses",allCourses);
 
  
   useEffect(()=>{
@@ -87,7 +86,7 @@ const CourseEnroll = () => {
     const courseCode = await selectedRowData.courseCode;
     const courseTitle = await selectedRowData.courseTitle;
     const faculty = await selectedRowData.facultyName;
-      console.log(courseCode, courseTitle, faculty);
+    try {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
   
@@ -99,6 +98,10 @@ const CourseEnroll = () => {
       setIsLoading(false)
       console.log(`Success - ${enrollHash.hash}`);
       swal("Successfully Enrolled", "You successfully Enrolled to the course", "success");
+    } catch (error) {
+      console.log(error);
+      throw new Error("No ethereum object");
+    }
     
   }
 

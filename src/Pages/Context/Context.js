@@ -7,8 +7,6 @@ const { ethereum } = window;
 
 export const FeedbackContext = createContext();
 
-console.log(contractABI, contractAddress);
-
 export const FeedbackProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
