@@ -12,6 +12,7 @@ export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(null);
   const signIn = localStorage.getItem("role");
+  const wallet = localStorage.getItem("wallet");
   const  [createUsrData, setCreateUserData] = useState({address: '', username: '', password: '', role: ''});
   const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''});
   const [allCourses, setAllCourses] = useState([]);
@@ -79,6 +80,7 @@ export const FeedbackProvider = ({ children }) => {
           throw new Error("No ethereum object.");
       }
     }
+
 
     //connect wallet
     const connectWallet = async() => {
@@ -244,7 +246,7 @@ export const FeedbackProvider = ({ children }) => {
   
   
     return (
-      <FeedbackContext.Provider value={{ isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks, getAllCoursesByAdmin, allCoursesOfAdmin}}>
+      <FeedbackContext.Provider value={{wallet, isSignedIn, setIsSignedIn, signIn, currentAccount, connectWallet, createAccountHandleChange, createUsrData, isLoading, setIsLoading, createUserAccount, courseAddHandleChange, addCourseData, AddCourse, allCourses, getCourses, getFacultyCourses, facultyCourses, getStudentCourses, studentEnrolledCourse, isClicked, setIsClicked, createEthereumContract, getAllFeedback, setFeedbackByCourseCode, feedbackByCourseCode, checkIfWalletIsConnected, allUsers, getAllUsers, allFeedbacks, getAllCoursesByAdmin, allCoursesOfAdmin,setCurrentAccount}}>
         {children}
       </FeedbackContext.Provider>
     )

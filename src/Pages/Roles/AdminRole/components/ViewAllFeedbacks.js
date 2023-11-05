@@ -83,7 +83,7 @@ const ViewAllFeedbacks = () => {
                 <p className="text-gray-900 whitespace-no-wrap">{course?.facultyName}</p>
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                <p className="text-gray-900 whitespace-no-wrap"><button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2 ' onClick={()=>{openFeedback(course.courseCode)}}>View Feedbacks</button></p>
+                <p className="text-gray-900 whitespace-no-wrap"><button className='btn font-semibold leading-tight rounded-full bg-red-200 text-red-900 px-4 py-2' onClick={()=>{openFeedback(course.courseCode)}}>View Feedbacks</button></p>
               </td>
                 </tr>)
             }

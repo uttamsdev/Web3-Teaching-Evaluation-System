@@ -23,21 +23,21 @@ import ViewFacultyFeedbacks from './Pages/Roles/FacultyRole/components/ViewFeedb
 
 
 const App = () => {
-  const {signIn} = useContext(FeedbackContext);
+  const {signIn, wallet} = useContext(FeedbackContext);
   return (
     <div>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/admin' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/admin/view-all-feedbacks' element={<ProtectedAdmin signIn={signIn}><AdminLayout><ViewAllFeedbacks></ViewAllFeedbacks></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/admin/create-account' element={<ProtectedAdmin signIn={signIn}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/admin/add-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AddCourses></AddCourses></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/admin/all-courses' element={<ProtectedAdmin signIn={signIn}><AdminLayout><AllCourses></AllCourses></AdminLayout></ProtectedAdmin>}></Route>
-        <Route path='/faculty' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
-        <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn}><FacultyLayout><ViewFacultyFeedbacks></ViewFacultyFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
-        <Route path='/student' element={<ProtectedStudent signIn={signIn}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
-        <Route path='/student/submit-feedback' element={<ProtectedStudent signIn={signIn}><StudentLayout><SubmitFeedback></SubmitFeedback></StudentLayout></ProtectedStudent>}></Route>
-        <Route path='/student/course-enroll' element={<ProtectedStudent signIn={signIn}><StudentLayout><CourseEnroll></CourseEnroll></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/admin' element={<ProtectedAdmin signIn={signIn} wallet={wallet}><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/view-all-feedbacks' element={<ProtectedAdmin signIn={signIn} wallet={wallet}><AdminLayout><ViewAllFeedbacks></ViewAllFeedbacks></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/create-account' element={<ProtectedAdmin signIn={signIn} wallet={wallet}><AdminLayout><Account></Account></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/add-courses' element={<ProtectedAdmin signIn={signIn}wallet={wallet}><AdminLayout><AddCourses></AddCourses></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/admin/all-courses' element={<ProtectedAdmin signIn={signIn} wallet={wallet}><AdminLayout><AllCourses></AllCourses></AdminLayout></ProtectedAdmin>}></Route>
+        <Route path='/faculty' element={<ProtectedFaculty signIn={signIn} wallet={wallet}><FacultyLayout><FacultyDashboard></FacultyDashboard></FacultyLayout></ProtectedFaculty>}></Route>
+        <Route path='/faculty/view-feedbacks' element={<ProtectedFaculty signIn={signIn} wallet={wallet}><FacultyLayout><ViewFacultyFeedbacks></ViewFacultyFeedbacks></FacultyLayout></ProtectedFaculty>}></Route>
+        <Route path='/student' element={<ProtectedStudent signIn={signIn} wallet={wallet}><StudentLayout><StudentDashboard></StudentDashboard></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/student/submit-feedback' element={<ProtectedStudent signIn={signIn} wallet={wallet}><StudentLayout><SubmitFeedback></SubmitFeedback></StudentLayout></ProtectedStudent>}></Route>
+        <Route path='/student/course-enroll' element={<ProtectedStudent signIn={signIn} wallet={wallet}><StudentLayout><CourseEnroll></CourseEnroll></StudentLayout></ProtectedStudent>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

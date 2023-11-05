@@ -33,17 +33,20 @@ const Home = () => {
               bcrypt.compare(password, user[0].password, (err, result) => {
                 if (result && user[0].role==='admin' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount) {
                   navigate("/admin");
+                  localStorage.setItem("wallet",currentAccount);
                   localStorage.setItem("role","admin");
                   setIsSignedIn(true);
                   console.log('Password matched!');
                 } 
                 else if(result && user[0].role==='faculty' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount){
                   navigate("/faculty");
+                  localStorage.setItem("wallet",currentAccount);
                   localStorage.setItem("role","faculty");
                   setIsSignedIn(true);
                 }
                 else if(result && user[0].role==='student' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount){
                   navigate("/student");
+                  localStorage.setItem("wallet",currentAccount);
                   localStorage.setItem("role","student");
                   setIsSignedIn(true);
                 }
