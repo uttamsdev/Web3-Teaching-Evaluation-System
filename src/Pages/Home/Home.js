@@ -31,31 +31,31 @@ const Home = () => {
 
 
               bcrypt.compare(password, user[0].password, (err, result) => {
-                if (result && user[0].role==='admin' && user[0].username===username) {
+                if (result && user[0].role==='admin' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount) {
                   navigate("/admin");
                   localStorage.setItem("role","admin");
                   setIsSignedIn(true);
                   console.log('Password matched!');
                 } 
-                else if(result && user[0].role==='faculty' && user[0].username===username){
+                else if(result && user[0].role==='faculty' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount){
                   navigate("/faculty");
                   localStorage.setItem("role","faculty");
                   setIsSignedIn(true);
                 }
-                else if(result && user[0].role==='student' && user[0].username===username){
+                else if(result && user[0].role==='student' && user[0].username===username && user[0].userAddress.toLowerCase() === currentAccount){
                   navigate("/student");
                   localStorage.setItem("role","student");
                   setIsSignedIn(true);
                 }
                 else {
-                  swal("Wrong Credential!", "Username or Password is wrong.!", "error");
+                  swal("Wrong Credential or Attempted to Hacking!", "Username or password is wrong or MetaMask wallet address not matched!", "error");
                   console.log('Password did not match.');
                 }
               });
    
      }
           } catch (error) {
-            swal("User Doesn't Exist", "This user doesn't exist to blockchain", "error");
+            swal("User Doesn't Exist or You", "This user doesn't exist to blockchain", "error");
             console.log(error);
             throw new Error("No ethereum object");
           }

@@ -30,6 +30,11 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
 				"internalType": "string",
 				"name": "_username",
 				"type": "string"
@@ -223,6 +228,11 @@
 			{
 				"components": [
 					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
 						"name": "username",
 						"type": "string"
@@ -364,6 +374,11 @@
 		"outputs": [
 			{
 				"components": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					},
 					{
 						"internalType": "string",
 						"name": "username",

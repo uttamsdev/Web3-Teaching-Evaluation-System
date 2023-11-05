@@ -12,7 +12,7 @@ export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(null);
   const signIn = localStorage.getItem("role");
-  const  [createUsrData, setCreateUserData] = useState({username: '', password: '', role: ''});
+  const  [createUsrData, setCreateUserData] = useState({address: '', username: '', password: '', role: ''});
   const [addCourseData, setAddCourseData] = useState({facultyAddress: '', facultyName: '', courseCode: '', courseTitle: ''});
   const [allCourses, setAllCourses] = useState([]);
   const [facultyCourses, setFacultyCourses] = useState([]);
@@ -96,11 +96,11 @@ export const FeedbackProvider = ({ children }) => {
     const createUserAccount = async() => {
       try {
         if(ethereum){
-          const {username, password, role} =  createUsrData;
+          const {address, username, password, role} =  createUsrData;
               bcrypt.genSalt(10, (err, salt) => {
               bcrypt.hash(password, salt, async(err, hash) => {
                 const transactionsContract = createEthereumContract();
-                const transactionHash = await transactionsContract.createUserAccount(username, hash, role);
+                const transactionHash = await transactionsContract.createUserAccount(address, username, hash, role);
                 setIsLoading(true);
                 console.log(`Loading - ${transactionHash.hash}`);
                 await transactionHash.wait();

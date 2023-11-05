@@ -7,9 +7,9 @@ const Account = () => {
     const  {createAccountHandleChange, createUsrData, isLoading, createUserAccount} = useContext(FeedbackContext);
 
     const handleLogin = async(event) => {
-        const {username, password, role} =  createUsrData;
+        const {address, username, password, role} =  createUsrData;
         event.preventDefault();
-        if(!username || !password || !role) return; 
+        if(!address, !username || !password || !role) return; 
         createUserAccount();
 
     }
@@ -19,6 +19,10 @@ const Account = () => {
             <div className='w-[325px] md:w-[600px] mx-auto'>
             <p className='w-full text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to create new user accounts. </p>
                 <form onSubmit={handleLogin} className='flex flex-col items-center bg-white py-10 rounded-xl shadow-sm'>
+                <div className='flex justify-start w-full ml-8 md:ml-[100px]'>
+                    <label htmlFor="#" className='font-bold'>Wallet Address </label>
+                    </div>
+                    <input type="text" className='border focus:outline-none w-[300px] md:w-[500px] h-10 bg-gray-200 pl-3 mb-4 ' name='address' placeholder='Enter wallet address' onBlur={(e) => createAccountHandleChange(e, e.target.name)}/>
                     <div className='flex justify-start w-full ml-8 md:ml-[100px]'>
                     <label htmlFor="#" className='font-bold'>Username: </label>
                     </div>
