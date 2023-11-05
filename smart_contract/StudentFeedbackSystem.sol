@@ -37,6 +37,7 @@ contract StudentFeadbacks{
         string courseTitle;
     }
      struct UserAccount {
+        address userAddress;
       string username;
       string password;
       string role;
@@ -83,11 +84,11 @@ contract StudentFeadbacks{
         feedbacks.push(Faculty(_to, _courseCode, _rating, _comment)); 
     }
 
-    function createUserAccount(string memory _username, string memory _password, string memory _role) public onlyOwner {
+    function createUserAccount(address _userAddress, string memory _username, string memory _password, string memory _role) public onlyOwner {
       userAccount[_username].push(
-          UserAccount(_username, _password, _role)
+          UserAccount(_userAddress, _username, _password, _role)
       );
-      userAccounts.push(UserAccount(_username, _password, _role));
+      userAccounts.push(UserAccount(_userAddress, _username, _password, _role));
   }
   
 
