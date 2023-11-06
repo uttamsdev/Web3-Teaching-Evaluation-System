@@ -17,10 +17,10 @@ const SubmitFeedback = () => {
     getStudentCourses();
   },[])
   return (
-    <div className='bg-[#F5F5F5] min-h-screen h-auto'>
-    <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineFileAdd className='ml-5 mr-3 w-6 h-6'/>Submit Feedback</p>
-    <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to give feedback. </p>
-    <div>
+    <div className='bg-[#F1F5F9]  h-screen'>
+    <p className='border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center'><AiOutlineFileAdd className='ml-5 mr-3 w-6 h-6'/>Submit Feedback</p>
+    <p className='w-1/3 text-center text-[#ea3d5a] text-md  py-3 border-l-4 border-[#ea3d5a]   bg-white shadow-md rounded-md mx-auto  bg-gradient-to-r from-stone-100 to-blue-50 drop-shadow-md'><b className="font-bold info-size">Info: </b>Please Fill up the form below correctly to give feedback. </p>
+    <div className='-mt-4'>
        <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">

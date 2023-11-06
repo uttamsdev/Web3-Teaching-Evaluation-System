@@ -83,7 +83,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
   return (
     <div>
         <div className='w-11/12 block mx-auto'>
-            <div className='bg-[#039BE5] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
+            <div className='bg-[#ea3d5a] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
                 <p className='text-2xl text-white'>About Faculty</p>
             </div>
             <div className='h-24 bg-white flex items-center relative border-b-2 border-gray-200 shadow-gray-200'>
@@ -157,7 +157,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
 
 
       <div className='w-11/12 block mx-auto mt-8'>
-            <div className='bg-[#039BE5] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
+            <div className='bg-[#ea3d5a] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
                 <p className='text-2xl text-white'>About Course</p>
             </div>
             <div className='h-24 bg-white flex items-center relative border-b-2 border-gray-200 shadow-gray-200'>
@@ -231,7 +231,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
 
 
       <div className='w-11/12 block mx-auto mt-8 pb-12'>
-            <div className='bg-[#039BE5] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
+            <div className='bg-[#ea3d5a] h-12 flex justify-center items-center mx-auto rounded-t-lg'>
                 <p className='text-2xl text-white'>Comment</p>
             </div>
 
@@ -240,7 +240,7 @@ const FeedbackPage = ({facultyAddress, courseCodeState}) => {
            {
             isLoading && <Loader/>
            }
-            <button type='submit' className='btn bg-[#039BE5] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
+            <button type='submit' className='btn bg-[#ea3d5a] px-12 py-3 text-white font-bold text-lg rounded-xl block mx-auto mt-4'>Submit Feedback</button>
            </form>
           
       </div>

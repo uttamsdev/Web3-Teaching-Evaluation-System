@@ -65,16 +65,16 @@ const Home = () => {
 
     }
   return (
-   <div className='h-screen bg-gray-100 pt-12'>
+   <div className='h-screen bg-[#F1F5F9] pt-12'>
     {
-        !currentAccount && <p className='info-width text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>Please Connect your wallet first time by click on Connect Wallet Button before login </p>
+        !currentAccount && <p className='info-width text-center text-[#b56a00] text-md  py-3 border-l-4 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto bg-gradient-to-r from-stone-100 to-blue-50 drop-shadow-md'><b className="font-bold info-size">Info: </b>Please Connect your wallet first time by click on Connect Wallet Button before login </p>
     }
     {
         !currentAccount && <button className='btn bg-[#333] text-white px-5 py-2 rounded block mx-auto mt-10 font-bold' onClick={connectWallet}>Connect Wallet</button>
     }
    
-     <div className={`flex justify-center items-center mt-12 ${currentAccount && "mt-36"}` }>
-        <div className='w-[350px] md:w-[450px] mx-auto bg-white flex justify-center h-[480px] shadow-xl'>
+     <div className={`flex justify-center items-center mt-12 ${currentAccount && "mt-36"} ` }>
+        <div className='w-[350px] md:w-[450px] mx-auto  flex justify-center h-[480px] shadow-xl bg-white'>
            <div>
             <img className='w-[100px] ring-4 rounded-full mx-auto mb-10 mt-12' src={loginLogo} alt="" />
            <h1 className='text-center text-2xl font-bold mb-3'>Login Your Account</h1>

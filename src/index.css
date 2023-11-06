@@ -12,7 +12,7 @@ code {
     monospace;
 }
 .calc-height{
-  height: calc(100vh - 100px)
+  height: calc(100vh - 70px)
 }
 .info-size{
   font-size: 18px;

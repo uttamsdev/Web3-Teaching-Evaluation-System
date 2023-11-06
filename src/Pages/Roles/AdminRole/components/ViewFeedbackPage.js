@@ -25,7 +25,7 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
 
   return (
     <div>
-        <p className='text-center text-[#16728e]  text-lg md:text-lg py-3 border-l-8 border-[#5bc0de]  mt-4 bg-[#4bc3e41d] rounded-md w-9/12 md:w-6/12 mx-auto'><b className="font-bold">Info: </b>This table below shows the feedbacks and rating evaluate and send by the students: .</p>
+        <p className='text-center text-[#ea3d5a]  text-lg md:text-lg py-3 border-l-4 border-[#ea3d5a]  mt-4 bg-white shadow-md rounded-md w-9/12 md:w-6/12 mx-auto  bg-gradient-to-r from-stone-100 to-blue-50 drop-shadow-md'><b className="font-bold">Info: </b>This table below shows the feedbacks and rating evaluate and send by the students: .</p>
         
         <div>
        <div className="container mx-auto px-4 sm:px-8">
@@ -90,7 +90,7 @@ const ViewFeedbackPage = ({feedbackByCourseCode}) => {
         background
         backgroundPadding={6}
         styles={buildStyles({
-          backgroundColor: "#3e98c7",
+          backgroundColor: "#F43F5E",
           textColor: "#fff",
           pathColor: "#fff",
           trailColor: "transparent"

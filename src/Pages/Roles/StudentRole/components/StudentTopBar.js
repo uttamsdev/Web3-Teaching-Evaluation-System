@@ -9,7 +9,7 @@ import {
 import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { Link } from 'react-router-dom';
-import UserImage from '../../../assets/studentLogo.jpg'
+import UserImage from '../../../assets/studentLogo.png'
 
 
 const StudentTopBar = ({ showNav, setShowNav }) => {
@@ -62,25 +62,25 @@ const StudentTopBar = ({ showNav, setShowNav }) => {
                         <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
                             <div className="p-1">
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <PencilIcon className="h-4 w-4 mr-2" />
                                         Edit
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <CreditCardIcon className="h-4 w-4 mr-2" />
                                         Billing
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <Cog8ToothIcon className="h-4 w-4 mr-2" />
                                         Settings
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" onClick={logOut} className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" onClick={logOut} className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <Cog8ToothIcon className="h-4 w-4 mr-2" />
                                         Logout
                                     </Link>

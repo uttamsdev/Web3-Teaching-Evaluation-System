@@ -8,8 +8,8 @@ const AllCourses = () => {
       getAllCoursesByAdmin();
     },[])
     return (
-        <div className='bg-[#F5F5F5] calc-height rounded-b-3xl'>
-        <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><MdOutlinePreview className='ml-5 mr-3 w-6 h-6'/>All Courses</p>
+        <div className='bg-[#F1F5F9] calc-height rounded-b-3xl'>
+        <p className='border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center rounded-t-xl'><MdOutlinePreview className='ml-5 mr-3 w-6 h-6'/>All Courses</p>
        <div>
        <div className="container mx-auto px-4 sm:px-8">
         <div className="py-4">

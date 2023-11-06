@@ -9,7 +9,7 @@ import {
 import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { Link } from 'react-router-dom';
-import UserImage from '../../../assets/adminLogo.jpg';
+import UserImage from '../../../assets/admin-icon.png';
 import {RiLogoutCircleLine} from 'react-icons/ri';
 
 
@@ -19,7 +19,7 @@ const TopBar = ({ showNav, setShowNav }) => {
         window.location.reload();
     }
     return (
-        <div className={`fixed w-full h-16 flex bg-white justify-between items-center transition-all duration-[400ms] ${showNav ? "pl-56" : ""}`}>
+        <div className={`border fixed w-full h-16 flex bg-white justify-between items-center transition-all duration-[400ms] ${showNav ? "pl-56" : ""}`}>
             <div className="pl-4 md:pl-16">
                 <Bars3CenterLeftIcon
                     className="h-8 w-8 text-gray-700 cursor-pointer"
@@ -62,25 +62,25 @@ const TopBar = ({ showNav, setShowNav }) => {
                         <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
                             <div className="p-1">
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <PencilIcon className="h-4 w-4 mr-2" />
                                         Edit
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <CreditCardIcon className="h-4 w-4 mr-2" />
                                         Billing
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         <Cog8ToothIcon className="h-4 w-4 mr-2" />
                                         Settings
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item>
-                                    <Link to="#" onClick={logOut} className="flex hover:bg-[#039BE5] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
+                                    <Link to="#" onClick={logOut} className="flex hover:bg-[#ea3d5a] hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">
                                         {/* <Cog8ToothIcon className="h-4 w-4 mr-2" /> */}
                                         <RiLogoutCircleLine className='h-4 w-4 mr-2'/>
                                         Logout

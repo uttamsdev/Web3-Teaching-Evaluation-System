@@ -28,7 +28,7 @@ const AdminLayout = ({ children }) => {
     }, []);
 
     return (
-        <>
+        <div>
             <TopBar showNav={showNav} setShowNav={setShowNav} />
             <Transition
                 as={Fragment}
@@ -43,11 +43,11 @@ const AdminLayout = ({ children }) => {
                 <SideBar showNav={showNav} />
             </Transition>
             <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile ? "pl-56" : ""}`}>
-                <div className='px-4 md:px-16'>
+                <div>
                     {children}
                 </div>
             </main>
-        </>
+        </div>
     );
 };
 

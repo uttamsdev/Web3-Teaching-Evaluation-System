@@ -8,14 +8,14 @@ const FacultyCourses = () => {
         getFacultyCourses();
     },[])
   return (
-    <div className='bg-[#F5F5F5]  rounded-b-3xl'>
-        <p className='text-white  flex justify-center text-xl mb-10 font-bold bg-[#039BE5] h-12 rounded-t-xl mt-16'><p className='flex justify-center items-center'>My Courses</p></p>
+    <div className='bg-[#F1F5F9]  rounded-b-3xl'>
+            <p className='text-white flex justify-center text-lg mb-[-15px] font-bold bg-[#ea3d5a] h-10 rounded-t-xl mt-10 w-[1100px] mx-auto relative z-10'><p className='flex justify-center items-center'>My Courses</p></p>
        <div>
        <div className="container mx-auto px-4 sm:px-8">
         <div>
     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
       <div
-        className="inline-block w-3/4 shadow-md rounded-lg overflow-hidden"
+        className="inline-block w-3/4 shadow-md  overflow-hidden"
       >
         <table className=" w-full leading-normal">
           <thead>

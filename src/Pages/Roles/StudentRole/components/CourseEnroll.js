@@ -93,11 +93,11 @@ const CourseEnroll = () => {
   }
 
   return (
-    <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-      <p className='text-white text-2xl mb-10 font-bold bg-[#039BE5] h-24 flex items-center rounded-t-xl'><AiOutlineAppstoreAdd className='ml-5 mr-3 w-6 h-6'/>Course Enrollment</p>
-      <p className='w-2/5 text-center text-[#b56a00] text-md  py-3 border-l-8 border-[#F0AD4E]  mb-8 bg-[#F4EEE4] rounded-md mx-auto'><b className="font-bold info-size">Info: </b>You have to Click on the course row to get enrolled  into the course. Thank you. </p>
-     <div className='inline-block min-w-full shadow-md rounded-lg overflow-hidden'>
-     <table {...getTableProps()} className="min-w-full leading-normal">
+    <div className=''>
+      <p className='w-full border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center'><AiOutlineAppstoreAdd className='ml-5 mr-3 w-6 h-6'/>Course Enrollment</p>
+      <p className='w-2/5 text-center text-[#ea3d5a] text-md  py-3 border-l-4 border-[#ea3d5a]  mb-8 bg-white shadow-md rounded-md mx-auto  bg-gradient-to-r from-stone-100 to-blue-50 drop-shadow-md'><b className="font-bold info-size">Info: </b>You have to Click on the course row to get enrolled  into the course. Thank you. </p>
+     <div className='inline-block w-4/5 shadow-md rounded-lg overflow-hidden ml-44'>
+     <table {...getTableProps()} className="min-w-full leading-normal ">
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
