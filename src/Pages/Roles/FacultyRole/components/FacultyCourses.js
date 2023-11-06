@@ -21,17 +21,17 @@ const FacultyCourses = () => {
           <thead>
             <tr>
               <th
-                className="text-center px-5 py-3 border-b-2 border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className="text-center px-5 py-3 border-b-2 border-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                Name
               </th>
               <th
-                className="text-center px-5 py-3 border-b-2 border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className="text-center px-5 py-3 border-b-2 border-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                 Course Code
               </th>
               <th
-                className=" text-center px-5 py-3 border-b-2 border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className=" text-center px-5 py-3 border-b-2 border-gray-200  text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
                 Course Title
               </th>
@@ -40,7 +40,7 @@ const FacultyCourses = () => {
           <tbody>
             {
                 facultyCourses?.map(course => <tr>
-                     <td className="px-5 py-5 border-b border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50 text-sm">
+                     <td className="px-5 py-5 border-b border-gray-200 text-sm">
                 <div className="flex items-center justify-center">
                   <div className="flex-shrink-0 w-10 h-10">
                   </div>
@@ -51,10 +51,10 @@ const FacultyCourses = () => {
                   </div>
                 </div>
               </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50 text-sm text-center">
+              <td className="px-5 py-5 border-b border-gray-200 text-sm text-center">
                 <p className="text-gray-900 whitespace-no-wrap">{course?.courseCode}</p>
               </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-gradient-to-r from-stone-100 to-blue-50 text-sm text-center">
+              <td className="px-5 py-5 border-b border-gray-200 text-sm text-center">
                 <p className="text-gray-900 whitespace-no-wrap">{course?.courseTitle}</p>
               </td>
                 </tr>)

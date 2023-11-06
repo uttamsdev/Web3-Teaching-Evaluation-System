@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {VscGitPullRequestCreate} from "react-icons/vsc"
 import { FeedbackContext } from '../../../Context/Context'
 import Loader from '../../../Shared/Loader';
@@ -6,7 +6,6 @@ import swal from 'sweetalert';
 
 const Account = () => {
     const  {createAccountHandleChange, createUsrData, isLoading, createUserAccount} = useContext(FeedbackContext);
-
     const handleLogin = async(event) => {
         const {address, username, password, role} =  createUsrData;
         event.preventDefault();
@@ -17,6 +16,7 @@ const Account = () => {
         createUserAccount();
 
     }
+
     return (
         <div className='bg-[#F1F5F9] calc-height rounded-b-3xl'>
             <p className='border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center rounded-t-xl'><VscGitPullRequestCreate className='ml-5 mr-3 w-6 h-6'/>Create Account</p>
