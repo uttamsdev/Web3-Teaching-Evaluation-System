@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import {VscGitPullRequestCreate} from "react-icons/vsc"
 import { FeedbackContext } from '../../../Context/Context'
 import Loader from '../../../Shared/Loader';
+import swal from 'sweetalert';
 
 const AddCourses = () => {
     const  {courseAddHandleChange, addCourseData, AddCourse, isLoading} = useContext(FeedbackContext);
@@ -10,7 +11,10 @@ const AddCourses = () => {
         const {facultyAddress, facultyName, courseCode, courseTitle} = addCourseData;
         event.preventDefault();
 
-        if(!facultyAddress || !facultyName || !courseCode || !courseTitle) return; 
+        if(!facultyAddress || !facultyName || !courseCode || !courseTitle) {
+            swal("Input field Empty", "At least one of input filed is empty!", "error");
+            return;
+        }
         AddCourse();
 
     }

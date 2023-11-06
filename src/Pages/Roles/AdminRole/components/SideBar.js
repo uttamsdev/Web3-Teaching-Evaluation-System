@@ -13,7 +13,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
 
     const router = useLocation();
     return (
-        <div ref={ref} className="bg-[#2D323E] fixed w-60 h-full shadow-lg">
+        <div ref={ref} className="bg-[#0F172A] fixed w-60 h-full shadow-lg">
             {/* Sidebar Logo */}
             <div className='flex justify-center mt-6 mb-14'>
                 <img src={AdminLogo} className='w-20 h-auto rounded-full ring-4 ring-offset-4' alt="company logo" />
