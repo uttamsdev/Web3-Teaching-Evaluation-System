@@ -5,12 +5,12 @@ import UnAuthorized from '../Shared/UnAuthorized';
  function Protected({ signIn, wallet, children }) {
   const {currentAccount } = useContext(FeedbackContext);
  
-  if (signIn != 'student' && wallet !== currentAccount) {
+  if (signIn != 'student') {
     localStorage.removeItem("role");
     localStorage.removeItem("wallet");
     return <Navigate to="/" replace />
   }
-  else if(wallet==currentAccount){
+  if(wallet==currentAccount){
     return children;
   } else {
     return <UnAuthorized></UnAuthorized>

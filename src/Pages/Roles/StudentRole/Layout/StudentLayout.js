@@ -28,7 +28,7 @@ const StudentLayout = ({ children }) => {
     }, []);
 
     return (
-        <>
+        <div>
             <TopBar showNav={showNav} setShowNav={setShowNav} />
             <Transition
                 as={Fragment}
@@ -47,7 +47,7 @@ const StudentLayout = ({ children }) => {
                     {children}
                 </div>
             </main>
-        </>
+        </div>
     );
 };
 

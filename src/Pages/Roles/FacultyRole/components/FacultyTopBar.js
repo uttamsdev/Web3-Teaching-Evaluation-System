@@ -14,7 +14,8 @@ import UserImage from '../../../assets/facultyIcon.png'
 
 const StudentTopBar = ({ showNav, setShowNav }) => {
     const logOut = () => {
-        localStorage.clear();
+        localStorage.removeItem("wallet");
+        localStorage.removeItem("role");
         window.location.reload();
     }
     return (
