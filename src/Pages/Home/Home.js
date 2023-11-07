@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from 'react-router-dom';
 import loginLogo from "../../Pages/assets/avatar.png"
+import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai"
 import swal from 'sweetalert';
 import { FeedbackContext } from '../Context/Context';
 const { ethereum } = window;
@@ -10,8 +11,19 @@ const { ethereum } = window;
 const Home = () => {
    const {isSignedIn,setIsSignedIn, currentAccount, connectWallet, createEthereumContract } = useContext(FeedbackContext);
     const [singleUser, setSingleUser] = useState(null);
+    const [passwordType, setPasswordType] = useState("password");
     const navigate = useNavigate();
 
+
+    const handlePasswordIconShowHide = () => {
+      if(passwordType==="password")
+      {
+        console.log("pass")
+        setPasswordType("text")
+        return;
+      } 
+        setPasswordType("password")
+    }
 
     const handleLogin = async(event) => {
         event.preventDefault();
@@ -82,7 +94,10 @@ const Home = () => {
             <label htmlFor="#" className='font-bold'>Username: </label> <br />
             <input className='border focus:outline-none mb-3 w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200' type="text"  name='username' placeholder='Enter username'/> <br />
             <label htmlFor="#" className='font-bold'>Password: </label> <br />
-            <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type="password" name="password" id="" placeholder='Enter password..'/> <br />
+            <input className='border focus:outline-none w-[300px] md:w-[350px] h-10 rounded pl-2 bg-gray-200 mb-5' type={passwordType} name="password" id="" placeholder='Enter password..'/> <br />
+            {
+              passwordType === "password" ? <AiOutlineEye onClick={handlePasswordIconShowHide}  className='relative bottom-12 right-[-318px] text-xl text-gray-700 cursor-pointer'/> : <AiOutlineEyeInvisible onClick={handlePasswordIconShowHide} className='relative bottom-12 right-[-318px] text-xl text-gray-700 cursor-pointer'/>
+            }
             <input className='btn bg-[#302d2d] text-white w-[300px] md:w-[350px] h-10 cursor-pointer hover:bg-black transition-all duration-200 ' type="submit" value="Login" />
         </form>
            </div>
