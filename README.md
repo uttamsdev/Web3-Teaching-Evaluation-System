@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Web3 Teaching Evaluation System
+This is fully web3 technology based teaching evaluation system. It was my research project's implementation. I build this web application. My research title is 'Blockchain-based Teaching Evaluation System for Ensuring Data Integrity and Anonymity'. There was some limitation to this field and we solved existing problems and added few more things then proposed the system. This research is published on the International Journal of Advanced Computer Science and Engineering. Volume 10 2023. Paper link: https://thesai.org/Publications/ViewPaper?Volume=14&Issue=10&Code=IJACSA&SerialNo=83 .
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [View Project on YouTube](https://www.youtube.com/watch?v=WSn-pCO03Ug&t=533s)
+https://www.youtube.com/watch?v=WSn-pCO03Ug&t=533s
 
-## Available Scripts
+## Features
+### Administrator Functionalities:
+* Login
+* Logout
+* Administrator can Create new student/faculty account
+* View total students, total faculties, total courses and total evaluation.
+* Administrator can View all courses
+* Administrator can Create a course to the organization/ Assign a course to a faculty
+* Administrator can View feedback/evaluations of all courses.
+* Administrator can View faculty performance of every courses out of 100 percent to understand how a faculty is performing in cases.
 
-In the project directory, you can run:
+### Faculty Functionalities 
+* Login
+* Logout
+* Faculty can View assigned courses for the particular faculty.
+* Faculty can view feedbacks/evaluation to their assigned courses only.
 
-### `npm start`
+## Student Functionalities
+* Login
+* Logout
+* Student can view their courses.
+* Student can enroll into a course/ Self registration to a course.
+* Student can give feedback/do evaluation to their enrolled course.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Special Functionalities
+* Proper authentication using Web3 technology
+* If someone have password of any user but he/she cannot login instead of having username and password because I mapped everything with metaMask wallet address. If username password and metaMask wallet address is correct then the user can login only. This provide an extra layer of security.
+* Protected path, user cannot get access to another user's path.
+* Password encryption using bcrypt algorithm.
+* Quite impossible to ha*ck.
+* Data cannot be altered due to using Blockchain.
+* Validations in every field and functionalities.
+## Technologies Used:
+* HTML5
+* Tailwind CSS
+* JavaScript
+* Solidity Programming Language
+* Bcrypt Algorithm
+* Hashing, Encryption/Decryption
+* Smart Contract
+* Ethereum Blockchain
+* ReactJS
+* MetaMask
+* EtherJS
+* Goerlitestnet
