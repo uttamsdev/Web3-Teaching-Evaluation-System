@@ -239,7 +239,7 @@ export const FeedbackProvider = ({ children }) => {
   
     useEffect(() => {
       checkIfWalletIsConnected();
-      // handleEncode();
+      handleEncode();
     // console.log("x",feedbackState);
 
     }, []);

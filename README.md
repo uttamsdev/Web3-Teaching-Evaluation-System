@@ -49,3 +49,7 @@ https://www.youtube.com/watch?v=WSn-pCO03Ug&t=533s
 * MetaMask
 * EtherJS
 * Goerlitestnet
+
+# Credientials
+ADMIN: username: admin password: uttamsaha wallet:0xAD60a05E4c384f96a360DcF24e9EC07bf2007757
+

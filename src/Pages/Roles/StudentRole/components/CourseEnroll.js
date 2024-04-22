@@ -77,7 +77,7 @@ const CourseEnroll = () => {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
   
-      const EnrollContract = new ethers.Contract("0x4F91905374d769faF210B9694Fef1baaE7096Cb3", abi, signer);
+      const EnrollContract = new ethers.Contract("0xBE17787a2E408736a557a5A83f73A5f9097BE3D5", abi, signer);
       const enrollHash = await EnrollContract.getEnroll(to, courseCode, courseTitle, faculty);
       setIsLoading(true)
       console.log(`Loading - ${enrollHash.hash}`);
