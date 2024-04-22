@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon, CreditCardIcon, UserIcon } from '@heroicons/react/24/solid';
 import facultyLogo from '../../../assets/facultyIcon.png'
 import {AiOutlineFundView} from "react-icons/ai";
-import { CiViewList } from 'react-icons/ci';
 
 const SideBar = forwardRef(({ showNav }, ref) => {
 
